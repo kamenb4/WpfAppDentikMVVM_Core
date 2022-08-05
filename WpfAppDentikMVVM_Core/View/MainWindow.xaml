@@ -4,20 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDentikMVVM_Core"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.View_Model" d:DataContext="{d:DesignInstance Type=model:DataPrice}"
+       
         mc:Ignorable="d"
-       Title="TestPrice" Height="850" Width="1100"  WindowStartupLocation="CenterScreen" Background="Silver" x:Name="Window">
+       Title="TestPrice" Height="850" Width="1100" Loaded="Window_Loaded"   WindowStartupLocation="CenterScreen" Background="Silver" x:Name="Window" >
 
 
     <Grid x:Name="GridMain">
+        
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="600" ></RowDefinition>
             <RowDefinition MinHeight="500"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="План услуг" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="30"></TextBlock>
-        <DataGrid Grid.Row="0"  x:Name="DgTreatPlan" Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
+        <DataGrid Grid.Row="0"  x:Name="DgTreatPlan"  Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=id}" Header="ID" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Диагноз?" Width="*"></DataGridTextColumn>
                 <!-- <materialDesign:DataGridComboBoxColumn Header="Treatment Option"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}"> -->
                 <!-- </materialDesign:DataGridComboBoxColumn> -->
@@ -33,28 +35,28 @@
                                     <RowDefinition ></RowDefinition>
                                     <RowDefinition Height="50*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <ComboBox Grid.Row="0" Name="Box" IsEditable="True"  
+                                <ComboBox Grid.Row="0" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box" IsEditable="True"  
                               DisplayMemberPath="TreatOption"
-                              SelectedItem="{Binding TreatOptions}"
-                              SelectedValue="{Binding TreatOptions}" 
+                              SelectedItem="{Binding TreatOption}"
+                              SelectedValue="{Binding TreatOption, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedValuePath="TreatOption"
                               VerticalAlignment="Center" 
                               
                               Margin="3" />
 
-                                <ComboBox Grid.Row="2" Name="Box2" IsEditable="True" 
+                                <ComboBox Grid.Row="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box2" IsEditable="True" 
                               DisplayMemberPath="TreatOption"
-                              SelectedItem="{Binding TreatOptions}"
-                              SelectedValue="{Binding TreatOptions}" 
+                              SelectedItem="{Binding TreatOption}"
+                              SelectedValue="{Binding TreatOption}" 
                               SelectedValuePath="TreatOption"
                               VerticalAlignment="Center"
                               
                               Margin="3" />
 
-                                <ComboBox Grid.Row="4" Name="Box3" IsEditable="True" 
+                                <ComboBox Grid.Row="4" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box3" IsEditable="True" 
                               DisplayMemberPath="TreatOption"
-                              SelectedItem="{Binding TreatOptions}"
-                              SelectedValue="{Binding TreatOptions}" 
+                              SelectedItem="{Binding TreatOption}"
+                              SelectedValue="{Binding TreatOption}" 
                               SelectedValuePath="TreatOption"
                              
                               VerticalAlignment="Center" 
@@ -79,16 +81,16 @@
                                 </Grid.RowDefinitions>
                                 <TextBox Grid.Row="0"
                                            Margin="3"
-                                            Text="{Binding Path=Fees}"></TextBox>
+                                            Text="{Binding Path=FeesFirst}"></TextBox>
 
                                 <TextBox Grid.Row="2"
                                            Margin="3"
-                                           Text="{Binding Path=Fees}"></TextBox>
+                                           Text="{Binding Path=FeesSecond}"></TextBox>
 
 
                                 <TextBox Grid.Row="4"
                                            Margin="3"
-                                           Text="{Binding Path= Fees}"></TextBox>
+                                           Text="{Binding Path= FeesThird}"></TextBox>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

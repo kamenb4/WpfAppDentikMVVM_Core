@@ -13,13 +13,14 @@ namespace WpfAppDentikMVVM_Core.Migrations
                 name: "dataPrices",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    problemName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    treatOption = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    fees = table.Column<int>(type: "int", nullable: false),
-                    time = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    problemName = table.Column<string>(type: "TEXT", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    treatOption = table.Column<string>(type: "TEXT", nullable: false),
+                    fees = table.Column<int>(type: "INTEGER", nullable: false),
+                    time = table.Column<string>(type: "TEXT", nullable: false),
+                    
                 },
                 constraints: table =>
                 {

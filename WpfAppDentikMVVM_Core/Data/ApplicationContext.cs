@@ -13,12 +13,12 @@ namespace WpfAppDentikMVVM_Core.Data
         public DbSet<DataPrice> dataPrices { get; set; }
         public ApplicationContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=WpfAppDentikDB;Trusted_Connection=true"); 
+            optionsBuilder.UseSqlite("Data Source=cool.db"); 
         }
     }
 }
