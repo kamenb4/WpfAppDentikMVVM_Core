@@ -1,0 +1,26 @@
+﻿<Page x:Class="WpfAppDentikMVVM_Core.View.PateintHistory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1000"
+      Title="PateintHistory">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="600"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" x:Name="SaveGrid"  Margin="10" AutoGenerateColumns="False">
+            <DataGrid.Columns >
+                <DataGridTextColumn Binding="{Binding Path=DateTime}" Header="Date" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Problems List" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Fees" IsReadOnly="True" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1"  Content="New patient" Margin="10" Cursor="Hand" ></Button>
+
+    </Grid>
+</Page>
