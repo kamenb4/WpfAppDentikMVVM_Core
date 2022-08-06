@@ -15,9 +15,9 @@
         </Grid.RowDefinitions>
         <DataGrid Grid.Row="0" x:Name="SaveGrid"  Margin="10" AutoGenerateColumns="False">
             <DataGrid.Columns >
-                <DataGridTextColumn Binding="{Binding Path=DateTime}" Header="Date" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Problems List" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Fees" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=DateTime}" Header="Дата" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Диагноз" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Стоимость" IsReadOnly="True" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Row="1"  Content="New patient" Margin="10" Cursor="Hand" ></Button>

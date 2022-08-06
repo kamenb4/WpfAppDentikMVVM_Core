@@ -44,7 +44,7 @@ namespace WpfAppDentikMVVM_Core.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new DataManageVM();
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -58,7 +58,7 @@ namespace WpfAppDentikMVVM_Core.View
             
             //оптимизировать метод
        
-            DgTreatPlan.ItemsSource = manageVM.AddTestData(_priceData);
+            DgTreatPlan.ItemsSource = manageVM.AddListDB(_treat);
            
         }
     }

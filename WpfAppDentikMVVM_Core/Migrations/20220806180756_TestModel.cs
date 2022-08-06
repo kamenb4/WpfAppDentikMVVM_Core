@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WpfAppDentikMVVM_Core.Migrations
 {
-    public partial class Initial : Migration
+    public partial class TestModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,7 @@ namespace WpfAppDentikMVVM_Core.Migrations
                     treatOption = table.Column<string>(type: "TEXT", nullable: false),
                     fees = table.Column<int>(type: "INTEGER", nullable: false),
                     time = table.Column<string>(type: "TEXT", nullable: false),
-                    
+                    option = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,11 +10,13 @@ namespace WpfAppDentikMVVM_Core.Data
 {
     internal class ApplicationContext : DbContext
     {
+
+        
         public DbSet<DataPrice> dataPrices { get; set; }
         public ApplicationContext()
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

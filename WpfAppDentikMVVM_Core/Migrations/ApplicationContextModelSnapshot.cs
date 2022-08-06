@@ -26,25 +26,10 @@ namespace WpfAppDentikMVVM_Core.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Fees")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ProblemName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TreatOption")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("fees")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("option")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("problemName")

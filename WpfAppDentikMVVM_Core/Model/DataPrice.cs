@@ -18,6 +18,7 @@ namespace WpfAppDentikMVVM_Core.Model
         public string treatOption { get; set; }
         public int fees { get; set; } 
         public string time { get; set; }
+        public bool option { get; set; }
         //public ObservableCollection<DataPrice>? _treat;
 
         //public ObservableCollection<DataPrice>? Treat
@@ -28,97 +29,175 @@ namespace WpfAppDentikMVVM_Core.Model
         //        _treat = value;
         //    }
         //}
-        public int Id
-        {
-            get
-            {
-                return id;
+        //public int Id
+        //{
+        //    get
+        //    {
+        //        return id;
 
-            }
-            set
-            {
-                id = value;
-                NotifyPropertyChanged("Id");
-            }
-        }
-        public string ProblemName
-        {
-            get
-            {
-                return problemName;
+        //    }
+        //    set
+        //    {
+        //        id = value;
+        //        NotifyPropertyChanged("Id");
+        //    }
+        //}
+        //public string ProblemName
+        //{
+        //    get
+        //    {
+        //        return problemName;
 
-            }
-            set
-            {
-                problemName = value;
-                NotifyPropertyChanged("ProblemName");
-            }
-        }
-        public string TreatOption
-        {
-            get
-            {
-                return treatOption;
+        //    }
+        //    set
+        //    {
+        //        problemName = value;
+        //        NotifyPropertyChanged("ProblemName");
+        //    }
+        //}
+        //public string TreatOptionFirst
+        //{
+        //    get
+        //    {
+        //        return treatOption;
 
-            }
-            set
-            {
-                treatOption = value;
-                NotifyPropertyChanged("TreatOption");
-            }
-        }
-        public int FeesFirst
-        {
-            get
-            {
-                return fees + 111;
+        //    }
+        //    set
+        //    {
+        //        treatOption = value;
+        //        NotifyPropertyChanged("TreatOptionFirst");
+        //    }
+        //}
+        //public string TreatOptionSecond
+        //{
+        //    get
+        //    {
+        //        return treatOption;
 
-            }
-            set
-            {
-                fees = value;
-                NotifyPropertyChanged("Fees");
-            }
-        }
-        public int FeesSecond
-        {
-            get
-            {
-                return fees + 222;
+        //    }
+        //    set
+        //    {
+        //        treatOption = value;
+        //        NotifyPropertyChanged("TreatOptionSecond");
+        //    }
+        //}
+        //public string TreatOptionThird
+        //{
+        //    get
+        //    {
+        //        return treatOption;
 
-            }
-            set
-            {
-                fees = value;
-                NotifyPropertyChanged("Fees");
-            }
-        }
-        public int FeesThird
-        {
-            get
-            {
-                return fees + 333;
+        //    }
+        //    set
+        //    {
+        //        treatOption = value;
+        //        NotifyPropertyChanged("TreatOptionThird");
+        //    }
+        //}
+        //public int FeesFirst
+        //{
+        //    get
+        //    {
+        //        return fees + 111;
 
-            }
-            set
-            {
-                fees = value;
-                NotifyPropertyChanged("Fees");
-            }
-        }
-        public string Time
-        {
-            get
-            {
-                return time;
+        //    }
+        //    set
+        //    {
+        //        fees = value;
+        //        NotifyPropertyChanged("FeesFirst");
+        //    }
+        //}
+        //public int FeesSecond
+        //{
+        //    get
+        //    {
+        //        return fees + 222;
 
-            }
-            set
-            {
-                time = value;
-                NotifyPropertyChanged("Time");
-            }
-        }
+        //    }
+        //    set
+        //    {
+        //        fees = value;
+        //        NotifyPropertyChanged("FeesSecond");
+        //    }
+        //}
+        //public int FeesThird
+        //{
+        //    get
+        //    {
+        //        return fees + 333;
+
+        //    }
+        //    set
+        //    {
+        //        fees = value;
+        //        NotifyPropertyChanged("FeesThird");
+        //    }
+        //}
+        //public string Time
+        //{
+        //    get
+        //    {
+        //        return time;
+
+        //    }
+        //    set
+        //    {
+        //        time = value;
+        //        NotifyPropertyChanged("Time");
+        //    }
+        //}
+        ////добавить взаимодействие свойств с бд
+        ////настроить изменение данных в ячейке при изменении значения комбобокса1
+        //public bool OptionFirst
+        //{
+        //    get
+        //    {
+        //        if (FeesFirst == 211)
+        //        {
+        //            return true;
+        //        }
+        //        else return false;
+        //    }
+        //    set
+        //    {
+        //        option = value;
+        //        NotifyPropertyChanged("OptionFirst");
+        //    }
+        //}
+        //public bool OptionSecond
+        //{
+        //    get
+        //    {
+        //        if (FeesSecond == 211)
+        //        {
+        //            return true;
+        //        }
+        //        else return false;
+        //    }
+        //    set
+        //    {
+        //        option = value;
+        //        NotifyPropertyChanged("OptionSecond");
+        //    }
+        //}
+
+        //    public bool OptionThird
+        //{
+        //    get
+        //    {
+        //        if (FeesThird == 211)
+        //        {
+        //            return true;
+        //        }
+        //        else return false;
+        //    }
+        //    set
+        //    {
+        //        option = value;
+        //        NotifyPropertyChanged("OptionThird");
+        //    }
+        //}
+   
 
 
 
@@ -131,8 +210,5 @@ namespace WpfAppDentikMVVM_Core.Model
             }
         }
 
-       
-
-        
 }
 }
