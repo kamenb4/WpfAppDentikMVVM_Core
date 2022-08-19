@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDentikMVVM_Core"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.View_Model" d:DataContext="{d:DesignInstance Type=model:DataPrice}"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.ViewModel" d:DataContext="{d:DesignInstance Type=model:DataPrice}"
        
         mc:Ignorable="d"
-       Title="TestPrice" Height="850" Width="1100" Loaded="Window_Loaded"   WindowStartupLocation="CenterScreen" Background="Silver" x:Name="Window" >
+       Title="TestPrice" Height="850" Width="1100"    WindowStartupLocation="CenterScreen" Background="Silver" x:Name="Window" WindowState="Maximized" >
 
 
     <Grid x:Name="GridMain">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="600" ></RowDefinition>
             <RowDefinition MinHeight="500"></RowDefinition>
@@ -19,15 +19,15 @@
         <TextBlock Text="План услуг" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="30"></TextBlock>
         <DataGrid Grid.Row="0"  x:Name="DgTreatPlan"  Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=id}" Header="ID" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=problemName}" Header="Диагноз?" Width="*"></DataGridTextColumn>
+                <!--<DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="*"></DataGridTextColumn>-->
+                <DataGridTextColumn  Header="Диагноз?" Binding="{Binding problemName}" MinWidth="450"></DataGridTextColumn>
                 <!-- <materialDesign:DataGridComboBoxColumn Header="Treatment Option"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}"> -->
                 <!-- </materialDesign:DataGridComboBoxColumn> -->
 
-                <DataGridTemplateColumn  Header="Возможные услуги" Width="230" >
-                    <DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn x:Name="dataGridTemplateColumn"  Header="Возможные услуги" MinWidth="280"  >
+                    <DataGridTemplateColumn.CellTemplate >
                         <DataTemplate>
-                            <Grid>
+                            <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"></RowDefinition>
                                     <RowDefinition ></RowDefinition>
@@ -35,31 +35,35 @@
                                     <RowDefinition ></RowDefinition>
                                     <RowDefinition Height="50*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <ComboBox Grid.Row="0" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box" IsEditable="True"  
-                              DisplayMemberPath="treatOption"
+                                <ComboBox   Grid.Row="0"  ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}"  IsEditable="True"  
+                              DisplayMemberPath="Treats"
                               SelectedItem="{Binding treatOption}"
+                              
+                              SelectionChanged="Box_SelectionChanged"
                               SelectedValue="{Binding treatOption, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="treatOption"
+                              SelectedValuePath="Treats"
                               VerticalAlignment="Center" 
                               
-                              Margin="3" />
+                              Margin="3" AutomationProperties.Name="Boxez" />
 
                                 <ComboBox Grid.Row="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box2" IsEditable="True" 
-                               DisplayMemberPath="treatOption"
+                                DisplayMemberPath="Treats"
                               SelectedItem="{Binding treatOption}"
+                              
+                              SelectionChanged="Box2_SelectionChanged"
                               SelectedValue="{Binding treatOption, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="treatOption"
-                              VerticalAlignment="Center" 
+                              SelectedValuePath="Treats"
+                              VerticalAlignment="Center"  
                               
                               Margin="3" />
 
                                 <ComboBox Grid.Row="4" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box3" IsEditable="True" 
-                               DisplayMemberPath="treatOption"
+                               DisplayMemberPath="Treats"
                               SelectedItem="{Binding treatOption}"
+                              
+                              SelectionChanged="Box3_SelectionChanged"
                               SelectedValue="{Binding treatOption, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="treatOption"
-                               
-                             
+                              SelectedValuePath="Treats"
                               VerticalAlignment="Center" 
                               Margin="3" />
 
@@ -69,7 +73,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Стоимость" Width="70">
+                <DataGridTemplateColumn x:Name="Feef" Header="Стоимость" MinWidth="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
@@ -82,22 +86,22 @@
                                 </Grid.RowDefinitions>
                                 <TextBox Grid.Row="0"
                                            Margin="3"
-                                            Text="{Binding Path=fees}"></TextBox>
+                                            Text="{Binding FeesFirst}"></TextBox>
 
                                 <TextBox Grid.Row="2"
                                            Margin="3"
-                                           Text="{Binding Path=fees}"></TextBox>
+                                           Text="{Binding FeesSecond}"></TextBox>
 
 
                                 <TextBox Grid.Row="4"
                                            Margin="3"
-                                           Text="{Binding Path= fees}"></TextBox>
+                                           Text="{Binding FeesThird}"></TextBox>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Время" Width="70">
+                <DataGridTemplateColumn Header="Время" MinWidth="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
@@ -110,22 +114,22 @@
                                 </Grid.RowDefinitions>
                                 <TextBox Grid.Row="0"
                                            Margin="3"
-                                            Text="{Binding Path=time}"></TextBox>
+                                            Text="{Binding TimeFirst}"></TextBox>
 
                                 <TextBox Grid.Row="2"
                                            Margin="3"
-                                           Text="{Binding Path=time}"></TextBox>
+                                           Text="{Binding TimeSecond}"></TextBox>
 
 
                                 <TextBox Grid.Row="4"
                                            Margin="3"
-                                           Text="{Binding Path= time}"></TextBox>
+                                           Text="{Binding TimeThird}"></TextBox>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Согласие пациента" Width="130">
+                <DataGridTemplateColumn Header="Согласие пациента" MinWidth="150">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
@@ -136,16 +140,16 @@
                                     <RowDefinition ></RowDefinition>
                                     <RowDefinition Height="50*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <CheckBox IsChecked="{Binding option}" Grid.Row="0"
+                                <CheckBox IsChecked="{Binding OptionFirst}" Grid.Row="0"
                                            Margin="3"
                                            ></CheckBox>
 
-                                <CheckBox IsChecked="{Binding option}" Grid.Row="2"
+                                <CheckBox IsChecked="{Binding OptionSecond}" Grid.Row="2"
                                            Margin="3"
                                            ></CheckBox>
 
 
-                                <CheckBox IsChecked="{Binding option}" Grid.Row="4"
+                                <CheckBox IsChecked="{Binding OptionThird}" Grid.Row="4"
                                            Margin="3"
                                            ></CheckBox>
                             </Grid>
@@ -157,8 +161,8 @@
                 <!--<DataGridCheckBoxColumn Header="Patient's option" Width="130"></DataGridCheckBoxColumn>-->
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="1"   Content="Печать" HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="130" MinHeight="50" Margin="40 40 130 40"/>
+        <Button Grid.Row="1" Click="Button_PrintClick"  Content="Печать" HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="130" MinHeight="50" Margin="40 40 130 40"/>
 
-        <Button Grid.Row="1"  Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="130" MinHeight="50" Margin="130 40 40 40"/>
+        <Button Grid.Row="1" Click="Button_SaveClick" Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="130" MinHeight="50" Margin="130 40 40 40"/>
     </Grid>
 </Window>

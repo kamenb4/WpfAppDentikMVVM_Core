@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="1000"
-      Title="PateintHistory">
+      Title="PateintHistory" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,12 +15,13 @@
         </Grid.RowDefinitions>
         <DataGrid Grid.Row="0" x:Name="SaveGrid"  Margin="10" AutoGenerateColumns="False">
             <DataGrid.Columns >
-                <DataGridTextColumn Binding="{Binding Path=DateTime}" Header="Дата" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Диагноз" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Стоимость" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DateTime}" Header="Дата" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding problemName}" Header="Диагноз" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding treatOption}" Header="Услуга" MinWidth="120"/>
+                <DataGridTextColumn Binding="{Binding Sum}"  Header="Стоимость" IsReadOnly="True" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="1"  Content="New patient" Margin="10" Cursor="Hand" ></Button>
+        <Button Grid.Row="1" Click="Button_Click"  Content="New patient" Margin="10" Cursor="Hand" ></Button>
 
     </Grid>
 </Page>

@@ -1,23 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfAppDentikMVVM_Core.Data;
 using WpfAppDentikMVVM_Core.Model;
-using WpfAppDentikMVVM_Core.View_Model;
+using WpfAppDentikMVVM_Core.ViewModel;
 
 namespace WpfAppDentikMVVM_Core.View
 {
@@ -26,40 +12,94 @@ namespace WpfAppDentikMVVM_Core.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataManageVM manageVM = new DataManageVM();
-        internal static int count = 1;
 
-        public static ObservableCollection<DataPrice>? _saveData;
-        public BindingList<DataPrice>? _priceData;
-        public ObservableCollection<DataPrice>? _treat;
 
-        public ObservableCollection<DataPrice>? Treat
+        public static ObservableCollection<DataPrice> _saveData = new ObservableCollection<DataPrice>();
+
+        public ObservableCollection<Dtum> _treat = new ObservableCollection<Dtum>();
+
+
+
+        public ObservableCollection<Dtum> Treat
         {
-            get { return manageVM.AddContext(_treat); }
+
+            get { return DataManageVM.AddContext(_treat); }
             set
             {
                 _treat = value;
             }
         }
+
+        public static ObservableCollection<DataPrice> SaveData
+        {
+            get { return _saveData; }
+            set
+            {
+                _saveData = value;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
-            
+            DgTreatPlan.ItemsSource = SaveData;
+
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Box_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //using (ApplicationContext applicationContext = new ApplicationContext())
-            //{
-            //    applicationContext.dataPrices.Load();
-            //    applicationContext.dataPrices.ToList();
-            //    //_treat = new ObservableCollection<DataPrice>(applicationContext.dataPrices.ToList());
-            //}
-            
-            //оптимизировать метод
-       
-            DgTreatPlan.ItemsSource = manageVM.AddListDB(_treat);
-           
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            var p = (ComboBox)sender;
+
+            var con = Convert.ToInt32(p.SelectedIndex);
+            SaveData[currentRowIndex].FeesFirst = Treat[con].Fees;
+            SaveData[currentRowIndex].TimeFirst = "1ч";
+        }
+
+        private void Button_SaveClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Данные о клиенте сохранены");
+                var historyPatient = new PateintHistory();
+                historyPatient.SaveGrid.ItemsSource = SaveData;
+                this.Content = historyPatient;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Нечего сохранять");
+            }
+        }
+
+        private void Button_PrintClick(object sender, RoutedEventArgs e)
+        {
+            var forPrint = new ForPrint();
+            var printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(forPrint.GridMain, "Печать");
+            }
+        }
+
+        private void Box2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            var p = (ComboBox)sender;
+
+
+            var con = Convert.ToInt32(p.SelectedIndex);
+
+            SaveData[currentRowIndex].FeesSecond = Treat[con].Fees;
+            SaveData[currentRowIndex].TimeSecond = "1ч";
+
+        }
+
+        private void Box3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            var p = (ComboBox)sender;
+            var con = Convert.ToInt32(p.SelectedIndex);
+            SaveData[currentRowIndex].FeesThird = Treat[con].Fees;
+            SaveData[currentRowIndex].TimeThird = "1ч";
         }
     }
 }

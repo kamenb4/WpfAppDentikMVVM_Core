@@ -5,32 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
         mc:Ignorable="d"
-         Title="ForPrint" Height="850" Width="1100" >
+         Title="ForPrint" Height="850" Width="1100" Loaded="ForPrint_OnLoaded">
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="600" ></RowDefinition>
             <RowDefinition MinHeight="500"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Treatment Plan" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="30"></TextBlock>
-        <DataGrid x:Name="dgTreatPlan" Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
+        <TextBlock Text="План лечения" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="30"></TextBlock>
+        <DataGrid x:Name="dgTreatPlan"  Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=id}" Header="Num" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Problems List" Width="*"></DataGridTextColumn>
-                <DataGridComboBoxColumn Header="Treatment Option"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}">
+                <!--<DataGridTextColumn Binding="{Binding Path=id}" Header="Num" Width="*"></DataGridTextColumn>-->
+                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Диагноз" Width="*"></DataGridTextColumn>
+                <DataGridComboBoxColumn Header="Услуга"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}">
                 </DataGridComboBoxColumn>
-                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Fees" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Time}"  Header="Time" Width="*"></DataGridTextColumn>
-                <DataGridCheckBoxColumn Header="Patient's option" Width="130"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Стоимость" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Time}"  Header="Время" Width="*"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Согласие" Width="130"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="1" FontSize="16"
-                   FontWeight="Bold" HorizontalAlignment="Center">INFORMED CONSENT DECLARATION</TextBlock>
+                   FontWeight="Bold" HorizontalAlignment="Center">TEST</TextBlock>
         <TextBlock Grid.Row="1" FontSize="15" Margin="15" LineHeight="50"><LineBreak />
-            I state the after being informed about of the purposes risks costs and treeatments test test test test
-            test test test testtest test test testtest test test testtest test test testtest test test test
-            test test test testtest test test testtest test test testtest test test testtest test test test
-            test test test testtest test test testtest test test testtest test test test<LineBreak/>
-        Patients or legal Guardian signature______________<LineBreak/>
-        Dentists signature______________</TextBlock>
+            I state the after being informed about of the purposes risks costs and treeatmentst<LineBreak/>
+        Пациент______________<LineBreak/>
+        Врач______________</TextBlock>
     </Grid>
 </Window>

@@ -20,9 +20,22 @@ namespace WpfAppDentikMVVM_Core.View
     /// </summary>
     public partial class PateintHistory : Page
     {
+        
         public PateintHistory()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+            
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SaveGrid.ItemsSource = MainWindow.SaveData;
         }
     }
 }
