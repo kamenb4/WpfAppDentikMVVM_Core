@@ -90,7 +90,7 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                return FeesFirst + FeesSecond + FeesThird;
+                return FeesFirst;
             }
         }
         public string TimeThird
