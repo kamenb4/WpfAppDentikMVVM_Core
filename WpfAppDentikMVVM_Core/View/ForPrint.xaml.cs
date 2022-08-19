@@ -29,8 +29,8 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void ForPrint_OnLoaded(object sender, RoutedEventArgs e)
         {
-            printData = MainWindow.SaveData;
-            dgTreatPlan.ItemsSource = printData;
+            //printData = MainWindow.SaveData;
+            //dgTreatPlan.ItemsSource = printData;
         }
     }
 }

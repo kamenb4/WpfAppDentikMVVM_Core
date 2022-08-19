@@ -11,16 +11,21 @@
             <RowDefinition MinHeight="600" ></RowDefinition>
             <RowDefinition MinHeight="500"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <TextBlock Text="План лечения" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="30"></TextBlock>
+        
+        <TextBlock />
         <DataGrid x:Name="dgTreatPlan"  Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding Path=id}" Header="Num" Width="*"></DataGridTextColumn>-->
-                <DataGridTextColumn Binding="{Binding Path=ProblemName}" Header="Диагноз" Width="*"></DataGridTextColumn>
-                <DataGridComboBoxColumn Header="Услуга"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}">
-                </DataGridComboBoxColumn>
-                <DataGridTextColumn Binding="{Binding Path=Fees}"  Header="Стоимость" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Time}"  Header="Время" Width="*"></DataGridTextColumn>
-                <DataGridCheckBoxColumn Header="Согласие" Width="130"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding problemName}" Header="Диагноз" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Услуга"  Width="*" x:Name="DataGridTreat"  Binding="{Binding SelectedTreats}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding SelectedFees}"  Header="Стоимость" Width="*">
+                   
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding SelectedTime}"  Header="Время" Width="*"></DataGridTextColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="1" FontSize="16"

@@ -11,16 +11,49 @@ namespace WpfAppDentikMVVM_Core.Model
 {
     public class DataPrice : INotifyPropertyChanged
     {
-
-        
         public string? problemName { get; set; }
-        public DateTime? DateTime { get; set; }
-        public string? treatOption { get; set; }
+        public DateTime? Datetime { get; set; }
+        public string treatOption { get; set; }
         public int fees { get; set; } 
         public string? time { get; set; }
-        public bool? option { get; set; }
+        public bool option { get; set; }
         Dtum dtum = new Dtum();
-        
+
+        public string TreatFirst
+        {
+            get
+            {
+                return dtum.Treats;
+            }
+            set
+            {
+                dtum.Treats = value;
+                NotifyPropertyChanged("TreatFirst");
+            }
+        }
+        public string TreatSecond {
+            get
+            {
+                return dtum.Treats;
+            }
+            set
+            {
+                dtum.Treats = value;
+                NotifyPropertyChanged("TreatSecond");
+            }
+        }
+        public string TreatThird {
+            get
+            {
+                return dtum.Treats;
+            }
+            set
+            {
+                dtum.Treats = value;
+                NotifyPropertyChanged("TreatThird");
+            }
+        }
+
         public long FeesFirst
         {
             get
@@ -60,6 +93,85 @@ namespace WpfAppDentikMVVM_Core.Model
                 NotifyPropertyChanged("FeesThird");
             }
         }
+        public string SelectedTreats
+        {
+            get
+            {
+                if (OptionFirst == true)
+                {
+                    return TreatFirst;
+                }
+                else if (OptionSecond == true)
+                {
+                    return TreatSecond;
+                }
+                else if (OptionThird == true)
+                {
+                    return TreatThird;
+                }
+                else return "syka";
+                
+            }
+            set
+            {
+                
+            }
+        }
+        public long SelectedFees
+        {
+            get
+            {
+                if (OptionFirst == true)
+                {
+                    return FeesFirst;
+                } else if (OptionSecond == true)
+                {
+                    return FeesSecond;
+                } else if (OptionThird == true) 
+                { 
+                    return FeesThird;
+                }
+                return 0;
+            }
+            set
+            {
+                if (OptionFirst == true)
+                {
+                    FeesFirst = value;
+                }
+                else if (OptionSecond == true)
+                {
+                    FeesSecond = value;
+                }
+                else if (OptionThird == true)
+                {
+                    FeesThird = value;
+                }
+            }
+        }
+        public string SelectedTime
+        {
+            get
+            {
+                if (OptionFirst == true)
+                {
+                    return TimeFirst;
+                }
+                else if (OptionSecond == true)
+                {
+                    return TimeSecond;
+                }
+                else if (OptionThird == true)
+                {
+                    return TimeThird;
+                }
+                return "prikol";
+            }
+            set
+            {
+                
+            }
+        }
         public string TimeFirst
         {
             get
@@ -90,7 +202,7 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                return FeesFirst;
+                return FeesFirst + FeesSecond + FeesThird;
             }
         }
         public string TimeThird
@@ -113,7 +225,7 @@ namespace WpfAppDentikMVVM_Core.Model
             get
             {
                 
-                    return false;
+                    return option;
                 
                 
             }

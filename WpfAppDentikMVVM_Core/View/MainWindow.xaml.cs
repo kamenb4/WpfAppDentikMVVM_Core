@@ -74,6 +74,8 @@ namespace WpfAppDentikMVVM_Core.View
         {
             var forPrint = new ForPrint();
             var printDialog = new PrintDialog();
+            forPrint.dgTreatPlan.ItemsSource = SaveData;
+            forPrint.Show();
             if (printDialog.ShowDialog() == true)
             {
                 printDialog.PrintVisual(forPrint.GridMain, "Печать");
@@ -100,6 +102,18 @@ namespace WpfAppDentikMVVM_Core.View
             var con = Convert.ToInt32(p.SelectedIndex);
             SaveData[currentRowIndex].FeesThird = Treat[con].Fees;
             SaveData[currentRowIndex].TimeThird = "1ч";
+        }
+
+        private void CheckBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            var p = (ComboBox)sender;
+
+
+            var con = Convert.ToInt32(p.SelectedIndex);
+
+            SaveData[currentRowIndex].OptionFirst = true;
+           
         }
     }
 }

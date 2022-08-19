@@ -20,7 +20,7 @@
         <DataGrid Grid.Row="0"  x:Name="DgTreatPlan"  Margin="130 60 130 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="*"></DataGridTextColumn>-->
-                <DataGridTextColumn  Header="Диагноз?" Binding="{Binding problemName}" MinWidth="450"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Диагноз" Binding="{Binding problemName}" MinWidth="450"></DataGridTextColumn>
                 <!-- <materialDesign:DataGridComboBoxColumn Header="Treatment Option"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}"> -->
                 <!-- </materialDesign:DataGridComboBoxColumn> -->
 
@@ -37,10 +37,10 @@
                                 </Grid.RowDefinitions>
                                 <ComboBox   Grid.Row="0"  ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}"  IsEditable="True"  
                               DisplayMemberPath="Treats"
-                              SelectedItem="{Binding treatOption}"
+                              SelectedItem="{Binding TreatFirst}"
                               
                               SelectionChanged="Box_SelectionChanged"
-                              SelectedValue="{Binding treatOption, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedValuePath="Treats"
                               VerticalAlignment="Center" 
                               
@@ -48,10 +48,10 @@
 
                                 <ComboBox Grid.Row="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box2" IsEditable="True" 
                                 DisplayMemberPath="Treats"
-                              SelectedItem="{Binding treatOption}"
+                              SelectedItem="{Binding TreatSecond}"
                               
                               SelectionChanged="Box2_SelectionChanged"
-                              SelectedValue="{Binding treatOption, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValue="{Binding TreatSecond, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedValuePath="Treats"
                               VerticalAlignment="Center"  
                               
@@ -59,10 +59,10 @@
 
                                 <ComboBox Grid.Row="4" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:MainWindow}}" Name="Box3" IsEditable="True" 
                                DisplayMemberPath="Treats"
-                              SelectedItem="{Binding treatOption}"
+                              SelectedItem="{Binding TreatThird}"
                               
                               SelectionChanged="Box3_SelectionChanged"
-                              SelectedValue="{Binding treatOption, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValue="{Binding TreatThird, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedValuePath="Treats"
                               VerticalAlignment="Center" 
                               Margin="3" />

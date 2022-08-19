@@ -15,9 +15,9 @@
         </Grid.RowDefinitions>
         <DataGrid Grid.Row="0" x:Name="SaveGrid"  Margin="10" AutoGenerateColumns="False">
             <DataGrid.Columns >
-                <DataGridTextColumn Binding="{Binding DateTime}" Header="Дата" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Datetime}" Header="Дата" IsReadOnly="True" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding problemName}" Header="Диагноз" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding treatOption}" Header="Услуга" MinWidth="120"/>
+                <DataGridTextColumn Binding="{Binding SelectedTreats}" Header="Услуга" MinWidth="120"/>
                 <DataGridTextColumn Binding="{Binding Sum}"  Header="Стоимость" IsReadOnly="True" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
