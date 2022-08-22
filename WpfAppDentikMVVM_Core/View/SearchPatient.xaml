@@ -1,0 +1,24 @@
+﻿<Page x:Class="WpfAppDentikMVVM_Core.View.SearchPatient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SearchPatient">
+
+    <Grid Background="#ffff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="13*" />
+        </Grid.RowDefinitions>
+        <TextBox Width="500" Height="50" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Grid.Row="0" Width="150" Height="30" Margin="0,30,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Поиск"/>
+        <StackPanel Grid.Row="1">
+            <ListView Height="300">
+
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -12,44 +12,48 @@ namespace WpfAppDentikMVVM_Core.Model
     public class DataPrice : INotifyPropertyChanged
     {
         public string? problemName { get; set; }
-        public DateTime? Datetime { get; set; }
+        public DateTime? Datetime { get; set; } = DateTime.Now;
         public string treatOption { get; set; }
         public int fees { get; set; } 
         public string? time { get; set; }
-        public bool option { get; set; }
-        Dtum dtum = new Dtum();
+        public bool optionFirst { get; set; }
+        public bool optionSecond { get; set; }
+        public bool optionThird { get; set; }
+        Dtum dtumFirst = new Dtum();
+        Dtum dtumSecond = new Dtum();
+        Dtum dtumThird = new Dtum();
 
         public string TreatFirst
         {
             get
             {
-                return dtum.Treats;
+                return dtumFirst.Treats;
             }
             set
             {
-                dtum.Treats = value;
+                dtumFirst.Treats = value;
                 NotifyPropertyChanged("TreatFirst");
             }
         }
         public string TreatSecond {
             get
             {
-                return dtum.Treats;
+                return dtumSecond.Treats;
             }
             set
             {
-                dtum.Treats = value;
+                dtumSecond.Treats = value;
                 NotifyPropertyChanged("TreatSecond");
             }
         }
         public string TreatThird {
             get
             {
-                return dtum.Treats;
+                return dtumThird.Treats;
             }
             set
             {
-                dtum.Treats = value;
+                dtumThird.Treats = value;
                 NotifyPropertyChanged("TreatThird");
             }
         }
@@ -58,12 +62,12 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                return dtum.Fees;
+                return dtumFirst.Fees;
 
             }
             set
             {
-                dtum.Fees = value;
+                dtumFirst.Fees = value;
                 NotifyPropertyChanged("FeesFirst");
             }
         }
@@ -71,12 +75,12 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                return dtum.Fees;
+                return dtumSecond.Fees;
 
             }
             set
             {
-                dtum.Fees = value;
+                dtumSecond.Fees = value;
                 NotifyPropertyChanged("FeesSecond");
             }
         }
@@ -84,12 +88,12 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                return dtum.Fees;
+                return dtumThird.Fees;
 
             }
             set
             {
-                dtum.Fees = value;
+                dtumThird.Fees = value;
                 NotifyPropertyChanged("FeesThird");
             }
         }
@@ -110,7 +114,8 @@ namespace WpfAppDentikMVVM_Core.Model
                     return TreatThird;
                 }
                 else return "syka";
-                
+               
+
             }
             set
             {
@@ -135,18 +140,7 @@ namespace WpfAppDentikMVVM_Core.Model
             }
             set
             {
-                if (OptionFirst == true)
-                {
-                    FeesFirst = value;
-                }
-                else if (OptionSecond == true)
-                {
-                    FeesSecond = value;
-                }
-                else if (OptionThird == true)
-                {
-                    FeesThird = value;
-                }
+                
             }
         }
         public string SelectedTime
@@ -225,13 +219,13 @@ namespace WpfAppDentikMVVM_Core.Model
             get
             {
                 
-                    return option;
+                    return optionFirst;
                 
                 
             }
             set
             {
-                option = value;
+                optionFirst = value;
                 NotifyPropertyChanged("OptionFirst");
             }
         }
@@ -239,11 +233,11 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                return false;
+                return optionSecond;
             }
             set
             {
-                option = value;
+                optionSecond = value;
                 NotifyPropertyChanged("OptionSecond");
             }
         }
@@ -253,12 +247,12 @@ namespace WpfAppDentikMVVM_Core.Model
 
             get
             { 
-                return false; 
+                return optionThird; 
             }
             
             set
             {
-                option = value;
+                optionThird = value;
                 NotifyPropertyChanged("OptionThird");
             }
         }

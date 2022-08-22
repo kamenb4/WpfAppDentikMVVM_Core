@@ -16,26 +16,13 @@ using System.Windows.Shapes;
 namespace WpfAppDentikMVVM_Core.View
 {
     /// <summary>
-    /// Логика взаимодействия для PateintHistory.xaml
+    /// Логика взаимодействия для PatientData.xaml
     /// </summary>
-    public partial class PateintHistory : Page
+    public partial class PatientData : Page
     {
-        
-        public PateintHistory()
+        public PatientData()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            
-            
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            //SaveGrid.ItemsSource = MainWindow.SaveData;
         }
     }
 }

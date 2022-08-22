@@ -29,7 +29,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="1" FontSize="16"
-                   FontWeight="Bold" HorizontalAlignment="Center">TEST</TextBlock>
+                   FontWeight="Bold" HorizontalAlignment="Center" Text="Итоговая стоимость лечения:"></TextBlock>
+        <TextBlock Grid.Row="1" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" Margin="350 0 0 0" Text="{Binding Sum}"/>
         <TextBlock Grid.Row="1" FontSize="15" Margin="15" LineHeight="50"><LineBreak />
             I state the after being informed about of the purposes risks costs and treeatmentst<LineBreak/>
         Пациент______________<LineBreak/>
