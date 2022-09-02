@@ -3,25 +3,34 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
+      xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="1000"
-      Title="PateintHistory" Loaded="Page_Loaded">
+      Title="PateintHistory" Loaded="Page_Loaded" Background="#ffff">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="600"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="SaveGrid"  Margin="10" AutoGenerateColumns="False">
-            <DataGrid.Columns >
-                <DataGridTextColumn Binding="{Binding Datetime}" Header="Дата" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding problemName}" Header="Диагноз" IsReadOnly="True" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding SelectedTreats}" Header="Услуга" MinWidth="120"/>
-                <DataGridTextColumn Binding="{Binding Sum}"  Header="Стоимость" IsReadOnly="True" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Grid.Row="1" Click="Button_Click"  Content="New patient" Margin="10" Cursor="Hand" ></Button>
+        <StackPanel>
+            <ListView x:Name="PatientListOne" Width="900" Height="600" Margin="50" AlternationCount="0">
+            <ListView.View>
+                <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding problemName}" Header="Диагноз" Width="320"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SelectedTreats}" Header="Услуга" Width="320"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SelectedFees}" Header="Стоимость" Width="300"></GridViewColumn>
+                </GridView>
+            </ListView.View>
 
+
+            <!--<DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FCs}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Width="*" Binding="{Binding birthDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер телефона" Width="*" Binding="{Binding phoneNumber}"></DataGridTextColumn>-->
+        </ListView>
+
+        </StackPanel>
+        <Button Grid.Row="1" Click="Button_Click" Width="400"  Content="Назад" Margin="10" Cursor="Hand" ></Button>
+        
     </Grid>
 </Page>

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDentikMVVM_Core"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.ViewModel" xmlns:customcontrols="clr-namespace:WpfAppDentikMVVM_Core.CustomControls" d:DataContext="{d:DesignInstance Type=model:DataPrice}"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.ViewModel" xmlns:customcontrols="clr-namespace:WpfAppDentikMVVM_Core.CustomControls" 
        
         mc:Ignorable="d"
        Title="TestPrice" Height="850" Width="1100"    WindowStartupLocation="CenterScreen" Background="White" x:Name="Window" WindowState="Maximized" >
@@ -18,8 +18,20 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Grid.Column="1">
+        <Grid x:Name="Welc" Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Добро пожаловать" FontSize="30"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Выберите врача:" FontSize="30" Margin="50 250 50 50"/>
+            <ComboBox ItemsSource="{Binding Doctors, RelativeSource={RelativeSource AncestorType=view:MainWindow}}"
+                      HorizontalAlignment="Center"
+                      SelectionChanged="ComboBox_SelectionChanged"
+                      MinWidth="220" 
+                      Margin="50 350 50 50"
+                      DisplayMemberPath="Name"
+                              SelectedItem="{Binding Name}"
+                              
+                              SelectedValue="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValuePath="Name"
+                              VerticalAlignment="Center" />
         </Grid>
         <!--<Grid.RowDefinitions>
             <RowDefinition MinHeight="600" ></RowDefinition>

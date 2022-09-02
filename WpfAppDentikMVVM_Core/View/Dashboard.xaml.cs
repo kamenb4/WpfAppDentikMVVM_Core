@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfAppDentikMVVM_Core.Model;
 using WpfAppDentikMVVM_Core.ViewModel;
 
@@ -23,9 +12,12 @@ namespace WpfAppDentikMVVM_Core.View
     /// </summary>
     public partial class Dashboard : Page
     {
+        public static ObservableCollection<PatientList>? _patientList = new ObservableCollection<PatientList>();
         public static ObservableCollection<DataPrice> _saveData = new ObservableCollection<DataPrice>();
 
         public ObservableCollection<Dtum> _treat = new ObservableCollection<Dtum>();
+        public ObservableCollection<DataPrice> forSaveCollect = new ObservableCollection<DataPrice>();
+
         public static ObservableCollection<DataPrice> _printData = new ObservableCollection<DataPrice>();
 
 
@@ -56,10 +48,20 @@ namespace WpfAppDentikMVVM_Core.View
                 _saveData = value;
             }
         }
+        public static ObservableCollection<PatientList>? PatientLists
+        {
+            get { return _patientList; }
+            set
+            {
+                _patientList = value;
+            }
+        }
         public Dashboard()
         {
             InitializeComponent();
+            SaveData.Clear();
             DgTreatPlan.ItemsSource = SaveData;
+             
 
         }
 
@@ -77,10 +79,31 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
+
+                //var listOf = new ListOfPatients();
+                //PatientData pd = new PatientData();
+
+
+                //var i = 0;
+                //_patientList.Add( new PatientList
+                //{
+                //    FCs = PatientData.DataTest[i].FCs,
+                //    birthDate = DateTime.Now,
+                //    phoneNumber = PatientData.DataTest[i].phoneNumber,
+                //    dataPrice = SaveData
+                //});
+                //listOf.AllPatientsList.ItemsSource = PatientLists;
+                //var historyPatient = new PateintHistory();
+                //historyPatient.SaveGrid.ItemsSource = SaveData;
+                PatientLists.Add(new PatientList
+                {
+                    FCs = PatientData.DataTest[0].FCs,
+                    birthDate = PatientData.DataTest[0].birthDate,
+                    phoneNumber = PatientData.DataTest[0].phoneNumber,
+                    dataPrice = forSaveCollect
+                });
+                
                 MessageBox.Show("Данные о клиенте сохранены");
-                var historyPatient = new PateintHistory();
-                historyPatient.SaveGrid.ItemsSource = SaveData;
-                this.Content = historyPatient;
             }
             catch (Exception ex)
             {
@@ -90,9 +113,16 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void Button_PrintClick(object sender, RoutedEventArgs e)
         {
+            long sum = 0;
             var forPrint = new ForPrint();
             var printDialog = new PrintDialog();
-            forPrint.dgTreatPlan.ItemsSource = SaveData;
+            foreach (var p in forSaveCollect)
+            {
+                sum += p.SelectedFees;
+            }
+
+            forPrint.dgTreatPlan.ItemsSource = forSaveCollect;
+            forPrint.textOfSum.Text = sum.ToString();
             forPrint.Show();
             if (printDialog.ShowDialog() == true)
             {
@@ -121,5 +151,57 @@ namespace WpfAppDentikMVVM_Core.View
             SaveData[currentRowIndex].TimeThird = "1ч";
         }
 
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            forSaveCollect.Add(new DataPrice() { 
+                problemName = SaveData[currentRowIndex].problemName,
+                SelectedTreats = SaveData[currentRowIndex].TreatFirst,
+                SelectedFees = SaveData[currentRowIndex].FeesFirst,
+                SelectedTime = SaveData[currentRowIndex].TimeFirst
+            });
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            forSaveCollect.Remove(SaveData[currentRowIndex]);
+        }
+
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            forSaveCollect.Add(new DataPrice()
+            {
+                problemName = SaveData[currentRowIndex].problemName,
+                SelectedTreats = SaveData[currentRowIndex].TreatSecond,
+                SelectedFees = SaveData[currentRowIndex].FeesSecond,
+                SelectedTime = SaveData[currentRowIndex].TimeSecond
+            });
+        }
+
+        private void CheckBox_Unchecked_1(object sender, RoutedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            forSaveCollect.Remove(SaveData[currentRowIndex]);
+        }
+
+        private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            forSaveCollect.Add(new DataPrice()
+            {
+                problemName = SaveData[currentRowIndex].problemName,
+                SelectedTreats = SaveData[currentRowIndex].TreatThird,
+                SelectedFees = SaveData[currentRowIndex].FeesThird,
+                SelectedTime = SaveData[currentRowIndex].TimeThird
+            });
+        }
+
+        private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)
+        {
+            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            forSaveCollect.Remove(SaveData[currentRowIndex]);
+        }
     }
 }

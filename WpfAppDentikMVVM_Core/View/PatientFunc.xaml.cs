@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,35 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfAppDentikMVVM_Core.Model;
 
 namespace WpfAppDentikMVVM_Core.View
 {
     /// <summary>
-    /// Логика взаимодействия для PatientData.xaml
+    /// Логика взаимодействия для PatientFunc.xaml
     /// </summary>
-    public partial class PatientData : Page
+    public partial class PatientFunc : Page
     {
-        public static ObservableCollection<PatientList> DataTest = new ObservableCollection<PatientList>();
-        
-
-
-        public PatientData()
+        public PatientFunc()
         {
-            
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataTest.Clear();
-            DataTest.Add(new PatientList { FCs = fcs.Text, birthDate = (DateTime)birthday.SelectedDate, phoneNumber = number.Text });
+            Dashboard.SaveData.Clear();
             foreach (Window window in Application.Current.Windows)
             {
 
                 if (window.GetType() == typeof(MainWindow))
                 {
-                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "Dashboard", ".xaml"), UriKind.RelativeOrAbsolute));
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PatientData", ".xaml"), UriKind.RelativeOrAbsolute));
                 }
 
             }
@@ -54,15 +46,10 @@ namespace WpfAppDentikMVVM_Core.View
 
                 if (window.GetType() == typeof(MainWindow))
                 {
-                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PatientFunc", ".xaml"), UriKind.RelativeOrAbsolute));
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "ListOfPatients", ".xaml"), UriKind.RelativeOrAbsolute));
                 }
 
             }
-        }
-
-        private void fcs_LostFocus(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -18,6 +18,7 @@ namespace WpfAppDentikMVVM_Core
         }
 
         public virtual DbSet<Dtum> Dta { get; set; } = null!;
+     
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

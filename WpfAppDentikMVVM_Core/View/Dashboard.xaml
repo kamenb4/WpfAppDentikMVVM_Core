@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
       mc:Ignorable="d"  xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.ViewModel"
-      d:DesignHeight="800" d:DesignWidth="1100"
+      d:DesignHeight="800" d:DesignWidth="1300"
       Title="Dashboard" Background="#ffff" x:Name="Window" HorizontalAlignment="Center" VerticalAlignment="Center" >
 
 
@@ -145,16 +145,16 @@
                                     <RowDefinition ></RowDefinition>
                                     <RowDefinition Height="50*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <CheckBox IsChecked="{Binding OptionFirst}" Grid.Row="0"
+                                <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" IsChecked="{Binding OptionFirst}" Grid.Row="0"
                                            Margin="3"
                                            ></CheckBox>
 
-                                <CheckBox IsChecked="{Binding OptionSecond}" Grid.Row="2"
+                                <CheckBox Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1" IsChecked="{Binding OptionSecond}" Grid.Row="2"
                                            Margin="3"
                                            ></CheckBox>
 
 
-                                <CheckBox IsChecked="{Binding OptionThird}" Grid.Row="4"
+                                <CheckBox Checked="CheckBox_Checked_2" Unchecked="CheckBox_Unchecked_2" IsChecked="{Binding OptionThird}" Grid.Row="4"
                                            Margin="3"
                                            ></CheckBox>
                             </Grid>

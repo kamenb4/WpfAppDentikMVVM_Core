@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace WpfAppDentikMVVM_Core.ViewModel
 {
-    internal class CommandViewModel : ICommand
+    public class CommandViewModel : ICommand
     {
         private readonly Action _action;
         public CommandViewModel(Action action)

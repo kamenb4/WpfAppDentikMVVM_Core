@@ -18,14 +18,14 @@ namespace WpfAppDentikMVVM_Core.ViewModel
                 return new List<MenuItemsData>
                 {
                     //MainMenu without SubMenu Button
-                    new MenuItemsData() { PathData=(PathGeometry)dict["icon_dashboard"], MenuText="Dashboard", SubMenuList=null},
+                    new MenuItemsData() { PathData=(PathGeometry)dict["icon_dashboard"], MenuText="Главная", SubMenuList=null},
                     //MainMenu Button
-                    new MenuItemsData() { PathData=(PathGeometry)dict["icon_users"], MenuText="Patients",
+                    new MenuItemsData() { PathData=(PathGeometry)dict["icon_users"], MenuText="Пациенты",
                     //SubMenu Button
                     SubMenuList=new List<SubMenuItemsData>
                     {
-                        new SubMenuItemsData() {PathData=(PathGeometry)dict["icon_adduser"], SubMenuText="New Patient"},
-                        new SubMenuItemsData() {PathData=(PathGeometry)dict["icon_alluser"], SubMenuText="All Patients"}
+                        new SubMenuItemsData() {PathData=(PathGeometry)dict["icon_adduser"], SubMenuText="Новый пациент"},
+                        new SubMenuItemsData() {PathData=(PathGeometry)dict["icon_alluser"], SubMenuText="Все пациенты"}
                     } },
                     //MainMenu Button
                     new MenuItemsData() { PathData=(PathGeometry)dict["icon_mails"], MenuText="Mails",
@@ -75,10 +75,21 @@ namespace WpfAppDentikMVVM_Core.ViewModel
             //We will search to our Main Window in open windows and then will access the frame inside it to set the navigation to desired page...
             foreach(Window window in Application.Current.Windows)
             {
-                if(window.GetType() == typeof(MainWindow))
+                if (Menu == "Главная")
                 {
-                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", Menu, ".xaml"), UriKind.RelativeOrAbsolute));
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        //window.Show();
+                        (window as MainWindow).MainWindowFrame.Content = null;/*.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "MainWindow", ".xaml"), UriKind.RelativeOrAbsolute));*/
+                    }
+                } else if (Menu == "Пациенты")
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PatientFunc", ".xaml"), UriKind.RelativeOrAbsolute));
+                    }
                 }
+               
             }
         }
     }
@@ -91,10 +102,10 @@ namespace WpfAppDentikMVVM_Core.ViewModel
 
         public SubMenuItemsData()
         {
-            Command = new CommandViewModel(Execute);
+            SubMenuCommand = new CommandViewModel(Execute);
         }
 
-        public ICommand Command { get; }
+        public ICommand SubMenuCommand { get; }
 
         private void Execute()
         {
@@ -111,9 +122,18 @@ namespace WpfAppDentikMVVM_Core.ViewModel
             //We will search to our Main Window in open windows and then will access the frame inside it to set the navigation to desired page...
             foreach (Window window in Application.Current.Windows)
             {
-                if (window.GetType() == typeof(MainWindow))
+                if (Menu == "Новыйпациент")
                 {
-                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", Menu, ".xaml"), UriKind.RelativeOrAbsolute));
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PatientData", ".xaml"), UriKind.RelativeOrAbsolute));
+                    }
+                } else if (Menu == "Всепациенты")
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "ListOfPatients", ".xaml"), UriKind.RelativeOrAbsolute));
+                    }
                 }
             }
         }

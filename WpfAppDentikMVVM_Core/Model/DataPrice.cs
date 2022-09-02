@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfAppDentikMVVM_Core.View;
 
 namespace WpfAppDentikMVVM_Core.Model
 {
@@ -14,7 +15,7 @@ namespace WpfAppDentikMVVM_Core.Model
         public string? problemName { get; set; }
         public DateTime? Datetime { get; set; } = DateTime.Now;
         public string treatOption { get; set; }
-        public int fees { get; set; } 
+        public long fees { get; set; } 
         public string? time { get; set; }
         public bool optionFirst { get; set; }
         public bool optionSecond { get; set; }
@@ -101,25 +102,26 @@ namespace WpfAppDentikMVVM_Core.Model
         {
             get
             {
-                if (OptionFirst == true)
-                {
-                    return TreatFirst;
-                }
-                else if (OptionSecond == true)
-                {
-                    return TreatSecond;
-                }
-                else if (OptionThird == true)
-                {
-                    return TreatThird;
-                }
-                else return "syka";
+                //if (OptionFirst == true)
+                //{
+                //    return TreatFirst;
+                //}
+                //else if (OptionSecond == true)
+                //{
+                //    return TreatSecond;
+                //}
+                //else if (OptionThird == true)
+                //{
+                //    return TreatThird;
+                //}
+                //else return "Error";
+                return treatOption;
                
 
             }
             set
             {
-                
+                treatOption = value;
             }
         }
         public long SelectedFees
@@ -136,11 +138,11 @@ namespace WpfAppDentikMVVM_Core.Model
                 { 
                     return FeesThird;
                 }
-                return 0;
+                return fees;
             }
             set
             {
-                
+                fees = value;
             }
         }
         public string SelectedTime
@@ -159,11 +161,11 @@ namespace WpfAppDentikMVVM_Core.Model
                 {
                     return TimeThird;
                 }
-                return "prikol";
+                return time;
             }
             set
             {
-                
+                time = value;
             }
         }
         public string TimeFirst
@@ -192,11 +194,15 @@ namespace WpfAppDentikMVVM_Core.Model
                 NotifyPropertyChanged("TimeSecond");
             }
         }
-        public long? Sum
+        public long Sum
         {
             get
             {
-                return FeesFirst + FeesSecond + FeesThird;
+                return 0;
+            }
+            set
+            {
+
             }
         }
         public string TimeThird

@@ -20,7 +20,7 @@ namespace WpfAppDentikMVVM_Core.View
     /// </summary>
     public partial class PateintHistory : Page
     {
-        
+        int p = 0;
         public PateintHistory()
         {
             InitializeComponent();
@@ -28,14 +28,23 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            
+            foreach (Window window in Application.Current.Windows)
+            {
+
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "ListOfPatients", ".xaml"), UriKind.RelativeOrAbsolute));
+                }
+
+            }
+
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //SaveGrid.ItemsSource = MainWindow.SaveData;
+
+            PatientListOne.ItemsSource = ListOfPatients.PatientLists[p++].dataPrice;
         }
     }
 }

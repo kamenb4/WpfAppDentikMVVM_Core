@@ -23,7 +23,7 @@
                 <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
                     <Setter Property="Foreground" Value="#515EC1"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Value="True">
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Value="True">
                     <Setter Property="Foreground" Value="#515EC1"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Value="True">
@@ -56,11 +56,12 @@
                                     <Grid.Style>
                                         <Style TargetType="{x:Type Grid}">
                                             <Style.Triggers>
-                                                <!--<DataTrigger Binding="{Binding HasIcon, ElementName=this, TargetNullValue=False, FallbackValue=False}" Value="False">
+                                                <DataTrigger Binding="{Binding HasIcon, ElementName=this, TargetNullValue=False, FallbackValue=False}" Value="False">
                                                     <Setter Property="Visibility" Value="Collapsed"/>
-                                                </DataTrigger>-->
+                                                </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
+
                                     </Grid.Style>
                                     <!--#endregion-->
 

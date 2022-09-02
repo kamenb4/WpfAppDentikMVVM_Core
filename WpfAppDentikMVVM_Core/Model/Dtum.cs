@@ -10,6 +10,7 @@ namespace WpfAppDentikMVVM_Core.Model
         public long Fees { get; set; }
         public long Id { get; set; }
 
+
        
     }
 }

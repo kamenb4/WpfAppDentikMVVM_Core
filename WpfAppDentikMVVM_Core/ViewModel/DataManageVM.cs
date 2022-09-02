@@ -21,6 +21,11 @@ namespace WpfAppDentikMVVM_Core.ViewModel
             }
         }
 
+        public static ObservableCollection<DoctorList> AddData(ObservableCollection<DoctorList> valuess)
+        {
+            valuess.Add(new DoctorList() { Name = "Шастин Евгений Николаевич" });
+            return valuess;
+        }
         private void PriceDataOnListChanged(object? sender, ListChangedEventArgs e)
         {
             switch (e.ListChangedType)

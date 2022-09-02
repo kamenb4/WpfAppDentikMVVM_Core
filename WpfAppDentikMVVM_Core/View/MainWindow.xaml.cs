@@ -13,8 +13,40 @@ namespace WpfAppDentikMVVM_Core.View
     public partial class MainWindow : Window
     {
 
+        
+        private ObservableCollection<DoctorList> doctors = new ObservableCollection<DoctorList>();
+        public static string doctorInPrint = "";
+        public ObservableCollection<DoctorList> Doctors
+        {
+            get
+            {
 
-        //public static ObservableCollection<DataPrice> _saveData = new ObservableCollection<DataPrice>();
+                return DataManageVM.AddData(doctors);
+            }
+            set
+            {
+
+            }
+        }
+
+        public string DoctorsInPrint
+        {
+            get
+            {
+                return doctorInPrint;
+            }
+            set
+            {
+                doctorInPrint = value;
+            }
+        }
+
+
+
+        //public static ObservableCollection<string> doctors = new ObservableCollection<string>()
+        //{
+        //    string Name = ""
+        //};
 
         //public ObservableCollection<Dtum> _treat = new ObservableCollection<Dtum>();
         //public static ObservableCollection<DataPrice> _printData = new ObservableCollection<DataPrice>();
@@ -50,8 +82,17 @@ namespace WpfAppDentikMVVM_Core.View
         public MainWindow()
         {
             InitializeComponent();
+
             //DgTreatPlan.ItemsSource = SaveData;
 
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var p = (ComboBox)sender;
+            var con = Convert.ToInt32(p.SelectedIndex);
+            DoctorsInPrint = Doctors[con].Name;
+            
         }
 
         //private void Box_SelectionChanged(object sender, SelectionChangedEventArgs e)

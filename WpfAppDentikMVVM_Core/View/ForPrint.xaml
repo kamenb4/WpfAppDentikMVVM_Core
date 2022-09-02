@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
         mc:Ignorable="d"
-         Title="ForPrint" Height="850" Width="1100" Loaded="ForPrint_OnLoaded">
+         Title="ForPrint" Height="1150" Width="1100" Loaded="ForPrint_OnLoaded">
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="600" ></RowDefinition>
@@ -19,7 +19,7 @@
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding Path=id}" Header="Num" Width="*"></DataGridTextColumn>-->
                 <DataGridTextColumn Binding="{Binding problemName}" Header="Диагноз" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Услуга"  Width="*" x:Name="DataGridTreat"  Binding="{Binding SelectedTreats}">
+                <DataGridTextColumn Header="Услуга"  Width="300" x:Name="DataGridTreat"  Binding="{Binding SelectedTreats}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding SelectedFees}"  Header="Стоимость" Width="*">
                    
@@ -29,11 +29,13 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="1" FontSize="16"
-                   FontWeight="Bold" HorizontalAlignment="Center" Text="Итоговая стоимость лечения:"></TextBlock>
-        <TextBlock Grid.Row="1" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" Margin="350 0 0 0" Text="{Binding Sum}"/>
-        <TextBlock Grid.Row="1" FontSize="15" Margin="15" LineHeight="50"><LineBreak />
-            I state the after being informed about of the purposes risks costs and treeatmentst<LineBreak/>
+                   FontWeight="Bold" Margin="300 150 0 0" Text="Итоговая стоимость лечения:"></TextBlock>
+        <TextBlock x:Name="textOfSum" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" Margin="80 150 0 0" FontWeight="Bold"  Text="{Binding Sum}">
+            <TextBlock></TextBlock>
+        </TextBlock>
+        <TextBlock  Grid.Row="1" FontSize="16" HorizontalAlignment="Center" FontWeight="Bold" Margin="250 150 0 0" Text=" рублей"/>
+        <TextBlock Grid.Row="1" FontSize="15" Margin="45 160 15 15" LineHeight="50"><LineBreak/>
         Пациент______________<LineBreak/>
-        Врач______________</TextBlock>
+        Врач______________<TextBlock Margin="15 0 0 0" x:Name="testDoctors"></TextBlock></TextBlock>
     </Grid>
 </Window>
