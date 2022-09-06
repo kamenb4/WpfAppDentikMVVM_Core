@@ -25,7 +25,32 @@
         <DataGrid Grid.Column="1" Grid.Row="0"  x:Name="DgTreatPlan"  Margin="80 60 80 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="*"></DataGridTextColumn>-->
-                <DataGridTextColumn  Header="Диагноз" Binding="{Binding problemName}" MinWidth="450"></DataGridTextColumn>
+                <DataGridTemplateColumn  Header="Диагноз"  MinWidth="450">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <TextBlock HorizontalAlignment="Left" Text="Номер зуба:" />
+                                    <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
+                                                IsEditable="True"  
+                              DisplayMemberPath="NumberTooth"
+                              SelectedItem="{Binding NumberTooth}"
+                              
+                              SelectionChanged="ComboBox_SelectionChanged"
+                              SelectedValue="{Binding NumberTooth, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValuePath="NumberTooth"
+                              VerticalAlignment="Center" 
+                              
+                              Margin="3"  />
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <!-- <materialDesign:DataGridComboBoxColumn Header="Treatment Option"  Width="*" x:Name="DataGridTreat" DisplayMemberPath="TreatOption"  SelectedItemBinding="{Binding TreatOption}"> -->
                 <!-- </materialDesign:DataGridComboBoxColumn> -->
 

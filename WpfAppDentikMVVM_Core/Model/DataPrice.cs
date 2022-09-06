@@ -15,6 +15,8 @@ namespace WpfAppDentikMVVM_Core.Model
         public string? problemName { get; set; }
         public DateTime? Datetime { get; set; } = DateTime.Now;
         public string treatOption { get; set; }
+        public List<int> numberTooth { get; set; }
+        public List<string> diagnostics { get; set; }
         public long fees { get; set; } 
         public string? time { get; set; }
         public bool optionFirst { get; set; }
@@ -23,6 +25,41 @@ namespace WpfAppDentikMVVM_Core.Model
         Dtum dtumFirst = new Dtum();
         Dtum dtumSecond = new Dtum();
         Dtum dtumThird = new Dtum();
+
+        public List<string> Diagnostics
+        {
+            get
+            {
+                return diagnostics;
+            }
+            set
+            {
+                diagnostics = value;
+            }
+        }
+        public List<int> NumberTooth
+        {
+            get
+            {
+                return numberTooth;
+            }
+            set
+            {
+                numberTooth = value;
+            }
+        }
+
+        public string ProblemName
+        {
+            get
+            {
+                return problemName;
+            }
+            set
+            {
+                problemName = value;
+            }
+        }
 
         public string TreatFirst
         {

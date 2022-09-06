@@ -17,8 +17,13 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="700"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Grid x:Name="Welc" Grid.Column="1">
+
+        <Grid Grid.Row="0" x:Name="Welc" Grid.Column="1" Margin="0 0 0 150">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Добро пожаловать" FontSize="30"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Выберите врача:" FontSize="30" Margin="50 250 50 50"/>
             <ComboBox ItemsSource="{Binding Doctors, RelativeSource={RelativeSource AncestorType=view:MainWindow}}"
@@ -32,6 +37,11 @@
                               SelectedValue="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedValuePath="Name"
                               VerticalAlignment="Center" />
+            
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Button x:Name="addNewButton" HorizontalAlignment="Left" Content="Новый пациент" Click="Button_Click" VerticalAlignment="Center" Margin="100 0 0 0" Visibility="Hidden"/>
+            <Button x:Name="getHistoryButton" HorizontalAlignment="Right" Content="История пациентов" Click="Button_Click_1" VerticalAlignment="Center" Margin="0 0 100 0" Visibility="Hidden"/>
         </Grid>
         <!--<Grid.RowDefinitions>
             <RowDefinition MinHeight="600" ></RowDefinition>

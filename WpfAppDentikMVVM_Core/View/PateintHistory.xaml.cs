@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppDentikMVVM_Core.Model;
 
 namespace WpfAppDentikMVVM_Core.View
 {
@@ -21,8 +22,12 @@ namespace WpfAppDentikMVVM_Core.View
     public partial class PateintHistory : Page
     {
         int p = 0;
+        PatientList v = new PatientList();
+
         public PateintHistory()
         {
+
+            
             InitializeComponent();
         }
 
@@ -43,8 +48,7 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
-            PatientListOne.ItemsSource = ListOfPatients.PatientLists[p++].dataPrice;
+            PatientListOne.ItemsSource = ListOfPatients.PatientLists[v.PatientIndex].dataPrice;
         }
     }
 }

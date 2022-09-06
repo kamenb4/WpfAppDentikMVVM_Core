@@ -20,6 +20,19 @@ namespace WpfAppDentikMVVM_Core.View
 
         public static ObservableCollection<DataPrice> _printData = new ObservableCollection<DataPrice>();
 
+        public static ObservableCollection<DataPrice> _toothDiagnos = new ObservableCollection<DataPrice>();
+        
+        public ObservableCollection<DataPrice> ToothDiagnos
+        {
+            get
+            {
+                return DataManageVM.AddTooth(_toothDiagnos);
+            }
+            set
+            {
+                _toothDiagnos = value;
+            }
+        }
 
 
         public ObservableCollection<Dtum> Treat
@@ -80,28 +93,14 @@ namespace WpfAppDentikMVVM_Core.View
             try
             {
 
-                //var listOf = new ListOfPatients();
-                //PatientData pd = new PatientData();
-
-
-                //var i = 0;
-                //_patientList.Add( new PatientList
-                //{
-                //    FCs = PatientData.DataTest[i].FCs,
-                //    birthDate = DateTime.Now,
-                //    phoneNumber = PatientData.DataTest[i].phoneNumber,
-                //    dataPrice = SaveData
-                //});
-                //listOf.AllPatientsList.ItemsSource = PatientLists;
-                //var historyPatient = new PateintHistory();
-                //historyPatient.SaveGrid.ItemsSource = SaveData;
                 PatientLists.Add(new PatientList
                 {
                     FCs = PatientData.DataTest[0].FCs,
                     birthDate = PatientData.DataTest[0].birthDate,
                     phoneNumber = PatientData.DataTest[0].phoneNumber,
                     dataPrice = forSaveCollect
-                });
+                    
+                });;
                 
                 MessageBox.Show("Данные о клиенте сохранены");
             }
@@ -154,7 +153,7 @@ namespace WpfAppDentikMVVM_Core.View
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
-            forSaveCollect.Add(new DataPrice() { 
+            forSaveCollect.Add(new DataPrice() {
                 problemName = SaveData[currentRowIndex].problemName,
                 SelectedTreats = SaveData[currentRowIndex].TreatFirst,
                 SelectedFees = SaveData[currentRowIndex].FeesFirst,
@@ -188,7 +187,9 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
+            
             var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+            MessageBox.Show(SaveData[currentRowIndex].problemName);
             forSaveCollect.Add(new DataPrice()
             {
                 problemName = SaveData[currentRowIndex].problemName,

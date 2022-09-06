@@ -13,6 +13,19 @@ namespace WpfAppDentikMVVM_Core.Model
         public DateTime birthDate { get; set; }
         public string phoneNumber { get; set; }
         public ObservableCollection<DataPrice> dataPrice { get; set; }
+        public int patientIndex { get; set; }
+
+        public int PatientIndex
+        {
+            get
+            {
+                return patientIndex;
+            }
+            set
+            {
+                patientIndex = value;
+            }
+        }
 
         //public DateTime BirthDate
         //{

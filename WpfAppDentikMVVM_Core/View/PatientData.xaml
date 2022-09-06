@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="850" d:DesignWidth="1100"
       Title="PatientData">
@@ -11,11 +12,11 @@
     <Grid Background="#ffff">
         <StackPanel>
             <TextBlock Text="ФИО" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 20 20 0" FontSize="30"/>
-            <TextBox x:Name="fcs" Width="300" Margin="30" LostFocus="fcs_LostFocus"/>
+            <TextBox x:Name="fcs" GotMouseCapture="fcs_GotMouseCapture" Width="300" Margin="30"/>
             <TextBlock Text="Дата рождения" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 20 20 0" FontSize="30"/>
-            <DatePicker x:Name="birthday" Width="300" Margin="30"/>
+            <DatePicker x:Name="birthday" GotMouseCapture="birthday_GotMouseCapture" Width="300" Margin="30"/>
             <TextBlock Text="Номер телефона" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 20 20 0" FontSize="30"/>
-            <TextBox x:Name="number" Width="300" Margin="30"/>
+            <TextBox x:Name="number" GotMouseCapture="number_GotMouseCapture" Width="300" Margin="30"/>
      
             <Button  Width="300" Content="Далее" Click="Button_Click" Margin="50 80 50 50" Cursor="Hand"/>
             <Button Width="300" Content="Отмена" Click="Button_Click_1" Margin="50 0 50 50"/>

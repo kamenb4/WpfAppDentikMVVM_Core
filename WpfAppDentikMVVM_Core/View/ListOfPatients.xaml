@@ -10,16 +10,48 @@
 
     <Grid Background="#ffff">
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <ListView MouseDoubleClick="AllPatientsList_MouseDoubleClick" Name="AllPatientsList" Width="900" Height="600" Margin="50" >
+        <Grid Width="300" HorizontalAlignment="Left">
+            <TextBlock  Margin="20 20 0 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                       Panel.ZIndex="1" Text="Поиск..."
+                       Visibility="Visible"/>
+            <TextBox x:Name="txtSearch" Margin="20 20 0 0"/>
+            
+        </Grid>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Все пациенты" FontSize="20" FontWeight="SemiBold" Margin="20 20 20 -20"
+                       HorizontalAlignment="Left" Foreground="#121518" />
+            <Button Grid.Row="1" Content="Новый пациент" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="200" Margin="50 -5 50 -10"/>
+
+            <ListView MouseDoubleClick="AllPatientsList_MouseDoubleClick" SelectedIndex="{Binding PatientIndex}" x:Name="AllPatientsList" Width="1050" Height="600" Margin="50" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding FCs}" Header="ФИО" Width="320"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding birthDate}" Header="Дата рождения" Width="320"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding phoneNumber}" Header="Номер телефона" Width="300"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding FCs}" Header="ФИО" Width="200"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding birthDate}" Header="Дата рождения" Width="200"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding phoneNumber}" Header="Номер телефона" Width="200"></GridViewColumn>
+                        <GridViewColumn Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Редактировать" Click="Button_Click_3"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        <GridViewColumn Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Удалить" Click="Button_Click_4"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                     </GridView>
                 </ListView.View>
                     
@@ -30,7 +62,6 @@
             </ListView>
 
         </StackPanel>
-        <Button Grid.Row="1" Content="Новый пациент" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="400" Margin="50"/>
         <Button Grid.Row="1" Content="Поиск" Click="Button_Click_1" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="400" Cursor="Cross"  Margin="50" Opacity="0.5" IsEnabled="False"/>
     </Grid>
 </Page>

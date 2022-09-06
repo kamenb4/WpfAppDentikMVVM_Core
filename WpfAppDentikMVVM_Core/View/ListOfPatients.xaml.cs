@@ -23,8 +23,10 @@ namespace WpfAppDentikMVVM_Core.View
     public partial class ListOfPatients : Page
     {
         //public static ObservableCollection<PatientList>? _patientList = new ObservableCollection<PatientList>();
-        
+
         //public static int p = 0;
+        
+       
         public static ObservableCollection<PatientList> PatientLists
         {
             get
@@ -89,22 +91,28 @@ namespace WpfAppDentikMVVM_Core.View
             //p = AllPatientsList.SelectedIndex;
             //MessageBox.Show(p.ToString());
             //PateintHistory history = new PateintHistory();
-            //var currentRowIndex = AllPatientsList.Items.IndexOf(AllPatientsList.SelectedIndex);
-            //MessageBox.Show(PatientLists[AllPatientsList.SelectedIndex].dataPrice.Count.ToString());
-            //history.PatientListOne.ItemsSource = PatientLists[AllPatientsList.SelectedIndex].dataPrice;
-
-            //var historyPatient = new PateintHistory();
-            //historyPatient.PatientListOne.ItemsSource = PatientLists[AllPatientsList.SelectedIndex].dataPrice;
+            //var currentRowIndex = AllPatientsList.Items.CurrentPosition;
+            //MessageBox.Show(AllPatientsList.Items.Count.ToString());
+            //MessageBox.Show(currentRowIndex.ToString());
+            //MessageBox.Show(AllPatientsList.SelectedIndex.ToString());
+            ////MessageBox.Show(PatientLists[AllPatientsList.SelectedIndex].dataPrice.Count.ToString());
+            ////history.PatientListOne.ItemsSource = PatientLists[AllPatientsList.SelectedIndex].dataPrice;
+            //var p = new PatientList();
+            //p.PatientIndex = AllPatientsList.SelectedIndex;
+            
+            
             foreach (Window window in Application.Current.Windows)
             {
 
                 if (window.GetType() == typeof(MainWindow))
                 {
+                    
                     (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PateintHistory", ".xaml"), UriKind.RelativeOrAbsolute));
                 }
 
             }
         }
+        
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -116,6 +124,21 @@ namespace WpfAppDentikMVVM_Core.View
             //    dataPrice = Dashboard.SaveData
             //});
             //AllPatientsList.ItemsSource = PatientLists;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

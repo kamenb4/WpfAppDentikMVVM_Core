@@ -92,7 +92,35 @@ namespace WpfAppDentikMVVM_Core.View
             var p = (ComboBox)sender;
             var con = Convert.ToInt32(p.SelectedIndex);
             DoctorsInPrint = Doctors[con].Name;
-            
+            addNewButton.Visibility = Visibility.Visible;
+            getHistoryButton.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Dashboard.SaveData.Clear();
+            foreach (Window window in Application.Current.Windows)
+            {
+
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PatientData", ".xaml"), UriKind.RelativeOrAbsolute));
+                }
+
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "ListOfPatients", ".xaml"), UriKind.RelativeOrAbsolute));
+                }
+
+            }
         }
 
         //private void Box_SelectionChanged(object sender, SelectionChangedEventArgs e)
