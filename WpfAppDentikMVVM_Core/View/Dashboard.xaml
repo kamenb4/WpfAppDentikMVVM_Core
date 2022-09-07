@@ -25,6 +25,7 @@
         <DataGrid Grid.Column="1" Grid.Row="0"  x:Name="DgTreatPlan"  Margin="80 60 80 60" FontWeight="Bold" AutoGenerateColumns="False" BorderBrush="Black">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="*"></DataGridTextColumn>-->
+                <!--<DataGridTextColumn Header="Диагноз" MinWidth="450" Binding="{Binding problemName}"></DataGridTextColumn>-->
                 <DataGridTemplateColumn  Header="Диагноз"  MinWidth="450">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -38,11 +39,19 @@
                                     <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
                                                 IsEditable="True"  
                               DisplayMemberPath="NumberTooth"
-                              SelectedItem="{Binding NumberTooth}"
-                              
-                              SelectionChanged="ComboBox_SelectionChanged"
-                              SelectedValue="{Binding NumberTooth, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedItem="NumberTooth"
                               SelectedValuePath="NumberTooth"
+                              VerticalAlignment="Center" 
+                              
+                              Margin="3"  />
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <TextBlock HorizontalAlignment="Left" Text="Диагноз:" />
+                                    <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
+                                                IsEditable="True"  
+                              DisplayMemberPath="Diagnostics"
+                              SelectedItem="Diagnostics"
+                              SelectedValuePath="Diagnostics"
                               VerticalAlignment="Center" 
                               
                               Margin="3"  />

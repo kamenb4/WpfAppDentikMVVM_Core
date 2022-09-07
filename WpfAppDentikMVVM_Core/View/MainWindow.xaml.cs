@@ -14,14 +14,14 @@ namespace WpfAppDentikMVVM_Core.View
     {
 
         
-        private ObservableCollection<DoctorList> doctors = new ObservableCollection<DoctorList>();
+        private static ObservableCollection<DoctorList> doctors = new ObservableCollection<DoctorList>();
+        private ObservableCollection<DoctorList> test = DataManageVM.AddData(doctors);
         public static string doctorInPrint = "";
         public ObservableCollection<DoctorList> Doctors
         {
             get
             {
-
-                return DataManageVM.AddData(doctors);
+                return test;
             }
             set
             {
