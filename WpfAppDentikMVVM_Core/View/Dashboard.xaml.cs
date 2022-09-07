@@ -20,14 +20,14 @@ namespace WpfAppDentikMVVM_Core.View
         public ObservableCollection<DataPrice> forSaveCollect = new ObservableCollection<DataPrice>();
 
         public static ObservableCollection<DataPrice> _printData = new ObservableCollection<DataPrice>();
+        private ObservableCollection<DataPrice> test = DataManageVM.AddTooth(_toothDiagnos);
+        public static ObservableCollection<DataPrice> _toothDiagnos = new ObservableCollection<DataPrice>();
 
-        public static ObservableCollection<DataTooth> _toothDiagnos = new ObservableCollection<DataTooth>();
-
-        public ObservableCollection<DataTooth> ToothDiagnos
+        public ObservableCollection<DataPrice> ToothDiagnos
         {
             get
             {
-                return DataManageVM.AddTooth(_toothDiagnos);
+                return test;
             }
             set
             {
@@ -102,7 +102,7 @@ namespace WpfAppDentikMVVM_Core.View
                     dataPrice = forSaveCollect
 
                 }); ;
-
+                ToothDiagnos.Clear();
                 MessageBox.Show("Данные о клиенте сохранены");
             }
             catch (Exception ex)

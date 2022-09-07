@@ -5,16 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfAppDentikMVVM_Core.View"
       mc:Ignorable="d"  xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.ViewModel"
-      d:DesignHeight="800" d:DesignWidth="1300"
-      Title="Dashboard" Background="#ffff" x:Name="Window" HorizontalAlignment="Center" VerticalAlignment="Center" >
+      d:DesignHeight="700" d:DesignWidth="1100"
+      Title="Dashboard"  x:Name="Window" >
 
 
-    <Grid x:Name="GridMain">
+    <Grid Background="#ffff" x:Name="GridMain">
 
-        <Grid.ColumnDefinitions>
-            
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+        
 
 
         <Grid.RowDefinitions>
@@ -36,12 +33,15 @@
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
                                     <TextBlock HorizontalAlignment="Left" Text="Номер зуба:" />
-                                    <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
-                                                IsEditable="True"  
+                                    <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"
+                                              HorizontalAlignment="Right" 
+                                              Width="100" 
+                                               
                               DisplayMemberPath="NumberTooth"
-                              SelectedItem="NumberTooth"
+                              SelectedItem="{Binding NumberTooth}"
+                              SelectedValue="{Binding NumberTooth, UpdateSourceTrigger=PropertyChanged}"
                               SelectedValuePath="NumberTooth"
-                              VerticalAlignment="Center" 
+                              
                               
                               Margin="3"  />
                                 </Grid>
@@ -50,8 +50,8 @@
                                     <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
                                                 IsEditable="True"  
                               DisplayMemberPath="Diagnostics"
-                              SelectedItem="Diagnostics"
-                              SelectedValuePath="Diagnostics"
+                              SelectedItem="{Binding Diagnostics}"
+                              SelectedValuePath="{Binding Diagnostics, UpdateSourceTrigger=PropertyChanged}"
                               VerticalAlignment="Center" 
                               
                               Margin="3"  />
@@ -73,8 +73,15 @@
                                     <RowDefinition Height="50*"></RowDefinition>
                                     <RowDefinition ></RowDefinition>
                                     <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <ComboBox   Grid.Row="0"  ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ComboBox   Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
                               DisplayMemberPath="Treats"
                               SelectedItem="{Binding TreatFirst}"
                               
@@ -85,7 +92,7 @@
                               
                               Margin="3" AutomationProperties.Name="Boxez" />
 
-                                <ComboBox Grid.Row="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box2" IsEditable="True" 
+                                <ComboBox Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box2" IsEditable="True" 
                                 DisplayMemberPath="Treats"
                               SelectedItem="{Binding TreatSecond}"
                               
@@ -96,7 +103,7 @@
                               
                               Margin="3" />
 
-                                <ComboBox Grid.Row="4" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box3" IsEditable="True" 
+                                <ComboBox Grid.Row="4" Grid.ColumnSpan="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box3" IsEditable="True" 
                                DisplayMemberPath="Treats"
                               SelectedItem="{Binding TreatThird}"
                               
@@ -106,6 +113,7 @@
                               VerticalAlignment="Center" 
                               Margin="3" />
 
+                                <TextBox Grid.Row="5" Text="fff"/>
 
                             </Grid>
                         </DataTemplate>

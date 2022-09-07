@@ -24,8 +24,33 @@ namespace WpfAppDentikMVVM_Core.Model
         Dtum dtumFirst = new Dtum();
         Dtum dtumSecond = new Dtum();
         Dtum dtumThird = new Dtum();
+        public string numberTooth { get; set; }
+        public string diagnostics { get; set; }
 
-       
+        public string Diagnostics
+        {
+            get
+            {
+                return diagnostics;
+            }
+            set
+            {
+                diagnostics = value;
+            }
+        }
+        public string NumberTooth
+        {
+            get
+            {
+                return numberTooth;
+            }
+            set
+            {
+                numberTooth = value;
+            }
+        }
+
+
 
         public string ProblemName
         {
