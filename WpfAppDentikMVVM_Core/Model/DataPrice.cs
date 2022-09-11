@@ -36,6 +36,7 @@ namespace WpfAppDentikMVVM_Core.Model
             set
             {
                 diagnostics = value;
+                //NotifyPropertyChanged("Diagnostics");
             }
         }
         public string NumberTooth
@@ -47,6 +48,7 @@ namespace WpfAppDentikMVVM_Core.Model
             set
             {
                 numberTooth = value;
+                //NotifyPropertyChanged("NumberTooth");
             }
         }
 
@@ -61,6 +63,7 @@ namespace WpfAppDentikMVVM_Core.Model
             set
             {
                 problemName = value;
+                NotifyPropertyChanged("ProblemName");
             }
         }
 

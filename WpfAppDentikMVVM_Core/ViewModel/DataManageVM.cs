@@ -25,7 +25,30 @@ namespace WpfAppDentikMVVM_Core.ViewModel
         public static ObservableCollection<DataPrice> AddTooth(ObservableCollection<DataPrice> valuess)
         {
             
-            valuess.Add(new DataPrice { NumberTooth = "18", Diagnostics = "Кариес" });
+            valuess.Add(
+                new DataPrice { NumberTooth = "11", Diagnostics = "Кариес" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "12", Diagnostics = "Пульпит" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "13", Diagnostics = "Периодонтит" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "14", Diagnostics = "Периостит" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "15", Diagnostics = "Гранулема" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "16", Diagnostics = "Киста" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "17", Diagnostics = "Адентия" }
+                );
+            valuess.Add(
+                new DataPrice { NumberTooth = "18", Diagnostics = "Гипоплазия" }
+                );
             return valuess;
         }
         public static ObservableCollection<DoctorList> AddData(ObservableCollection<DoctorList> valuess)

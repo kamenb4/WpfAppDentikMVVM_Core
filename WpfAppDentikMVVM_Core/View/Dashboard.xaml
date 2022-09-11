@@ -47,13 +47,14 @@
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <TextBlock HorizontalAlignment="Left" Text="Диагноз:" />
-                                    <ComboBox ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
+                                    <ComboBox Text="sao" ItemsSource="{Binding ToothDiagnos, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" HorizontalAlignment="Right" Width="100" 
                                                 IsEditable="True"  
                               DisplayMemberPath="Diagnostics"
                               SelectedItem="{Binding Diagnostics}"
-                              SelectedValuePath="{Binding Diagnostics, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding Diagnostics, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValuePath="Diagnostics"
                               VerticalAlignment="Center" 
-                              
+                              SelectionChanged="ComboBox_SelectionChanged_1"
                               Margin="3"  />
                                 </Grid>
                             </Grid>
@@ -78,10 +79,11 @@
                                     <RowDefinition ></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <ComboBox   Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
+                                <TextBlock Text="Эконом" Grid.Column="0" Grid.Row="0" />
+                                <ComboBox   Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
                               DisplayMemberPath="Treats"
                               SelectedItem="{Binding TreatFirst}"
                               
@@ -92,7 +94,9 @@
                               
                               Margin="3" AutomationProperties.Name="Boxez" />
 
-                                <ComboBox Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box2" IsEditable="True" 
+                                <TextBlock Text="Эконом" Grid.Column="0" Grid.Row="2" />
+
+                                <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box2" IsEditable="True" 
                                 DisplayMemberPath="Treats"
                               SelectedItem="{Binding TreatSecond}"
                               
@@ -103,7 +107,9 @@
                               
                               Margin="3" />
 
-                                <ComboBox Grid.Row="4" Grid.ColumnSpan="2" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box3" IsEditable="True" 
+                                <TextBlock Text="Эконом" Grid.Column="0" Grid.Row="4" />
+
+                                <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}" Name="Box3" IsEditable="True" 
                                DisplayMemberPath="Treats"
                               SelectedItem="{Binding TreatThird}"
                               
@@ -112,8 +118,8 @@
                               SelectedValuePath="Treats"
                               VerticalAlignment="Center" 
                               Margin="3" />
-
-                                <TextBox Grid.Row="5" Text="fff"/>
+                                <Button Grid.Row="5" Grid.Column="1"  Content="Добавить услугу" Click="Button_Click" MaxWidth="200" />
+                                <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="Тест окна комментария"/>
 
                             </Grid>
                         </DataTemplate>

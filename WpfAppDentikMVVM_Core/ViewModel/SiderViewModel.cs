@@ -37,7 +37,7 @@ namespace WpfAppDentikMVVM_Core.ViewModel
                         new SubMenuItemsData() {PathData=(PathGeometry)dict["icon_sentmail"], SubMenuText="Sent"}
                     } },
                     //MainMenu without SubMenu Button
-                    new MenuItemsData() { PathData=(PathGeometry)dict["icon_settings"], MenuText="Settings",SubMenuList=null }
+                    new MenuItemsData() { PathData=(PathGeometry)dict["icon_settings"], MenuText="Настройки",SubMenuList=null }
                 };
             }
         }
@@ -89,7 +89,14 @@ namespace WpfAppDentikMVVM_Core.ViewModel
                         (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "PatientFunc", ".xaml"), UriKind.RelativeOrAbsolute));
                     }
                 }
-               
+                else if (Menu == "Настройки")
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "Settings", ".xaml"), UriKind.RelativeOrAbsolute));
+                    }
+                }
+
             }
         }
     }
