@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfAppDentikMVVM_Core.View;
 
 namespace WpfAppDentikMVVM_Core.Model
@@ -26,6 +27,17 @@ namespace WpfAppDentikMVVM_Core.Model
         Dtum dtumThird = new Dtum();
         public string numberTooth { get; set; }
         public string diagnostics { get; set; }
+        public Visibility visibilityTreatFirstSecond { get; set; } = Visibility.Hidden;
+        public Visibility visibilityTreatFirstThird { get; set; } = Visibility.Hidden;
+
+        public Visibility visibilityTreatSecondSecond { get; set; } = Visibility.Hidden;
+        public Visibility visibilityTreatSecondThird { get; set; } = Visibility.Hidden;
+
+        public Visibility visibilityTreatThirdSecond { get; set; } = Visibility.Hidden;
+
+        public Visibility visibilityTreatThirdThird { get; set; } = Visibility.Hidden;
+
+
 
         public string Diagnostics
         {

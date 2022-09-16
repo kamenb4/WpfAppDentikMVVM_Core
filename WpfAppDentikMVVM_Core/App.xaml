@@ -34,6 +34,8 @@
         <!--#region MaterialDesign-->
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--Верхняя область-->
+                <ResourceDictionary Source="Style\Window\WindowStyle.xaml" />
                 <!--Цветовая схема-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

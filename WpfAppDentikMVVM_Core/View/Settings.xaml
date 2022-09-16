@@ -16,78 +16,65 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="400*"/>
+            <RowDefinition Height="400"/>
             <RowDefinition />
             
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" Grid.Row="0">
+       
+        <Button Grid.ColumnSpan="2" Grid.Row="1" Click="Button_Click" Content="Изменить значения" BorderThickness="10" MaxWidth="400" Margin="10"/>
+        <Grid Grid.ColumnSpan="2" MaxWidth="200">
             <StackPanel>
-                <ComboBox Width="100" Margin="20"/>
-                <ComboBox Width="100" Margin="20"/>
-                <ComboBox Width="100" Margin="20" />
-                <ComboBox Width="100" Margin="20"/>
-                <ComboBox Width="100" Margin="20"/>
+                <TextBlock Text="Выберите диагноз" Grid.Column="0" Grid.Row="0" Margin="0 15 0 0"/>
+                <ComboBox x:Name="diagCombo"  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Tooth, RelativeSource={RelativeSource AncestorType=view:Settings}}"  IsEditable="True"  
+                              DisplayMemberPath="Diagnostics"
+                              SelectedItem="{Binding Diagnostics}"
+                              
+                              SelectionChanged="diagCombo_SelectionChanged"
+                              SelectedValue="{Binding Diagnostics, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValuePath="Diagnostics"
+                              VerticalAlignment="Center" 
+                              
+                              Margin="3" />
+                <TextBlock x:Name="exText" Text="Экстрен." Grid.Column="0" Grid.Row="0" Margin="0 15 0 0" Visibility="Collapsed"/>
+
+                <ComboBox x:Name="firstCombo"  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Settings}}"  IsEditable="True"  
+                              DisplayMemberPath="Treats"
+                              SelectedItem="{Binding TreatFirst}"
+                              
+                              SelectionChanged="ComboBox_SelectionChanged"
+                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValuePath="Treats"
+                              VerticalAlignment="Center" 
+                              
+                              Margin="3" Visibility="Collapsed" />
+
+                <TextBlock x:Name="economText" Text="Эконом." Grid.Column="0" Grid.Row="2" Margin="0 15 0 0" Visibility="Collapsed"/>
+
+                <ComboBox x:Name="secondCombo" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Settings}}"  IsEditable="True" 
+                                DisplayMemberPath="Treats"
+                              SelectedItem="{Binding TreatSecond}"
+                              
+                              SelectionChanged="Box2_SelectionChanged"
+                              SelectedValue="{Binding TreatSecond, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValuePath="Treats"
+                              VerticalAlignment="Center"  
+                              
+                              Margin="3" Visibility="Collapsed" />
+
+                <TextBlock x:Name="recomendText" Text="Рекоменд." Grid.Column="0" Grid.Row="4" Margin="0 15 0 0" Visibility="Collapsed" />
+
+                <ComboBox x:Name="thirdCombo" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Settings}}"  IsEditable="True" 
+                               DisplayMemberPath="Treats"
+                              SelectedItem="{Binding TreatThird}"
+                              
+                              SelectionChanged="Box3_SelectionChanged"
+                              SelectedValue="{Binding TreatThird, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedValuePath="Treats"
+                              VerticalAlignment="Center" 
+                              Margin="3" Visibility="Collapsed" />
+                
+
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="0">
-            <StackPanel>
-                <ComboBox Width="100" Margin="20"
-                          ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
-                              DisplayMemberPath="Treats"
-                              SelectedItem="{Binding TreatFirst}"
-                              
-                              
-                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="Treats"
-                              VerticalAlignment="Center" 
-                              
-                              />
-                <ComboBox Width="100" Margin="20"
-                          ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
-                              DisplayMemberPath="Treats"
-                              SelectedItem="{Binding TreatFirst}"
-                              
-                              
-                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="Treats"
-                              VerticalAlignment="Center" 
-                              
-                              />
-                <ComboBox Width="100" Margin="20" 
-                          ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
-                              DisplayMemberPath="Treats"
-                              SelectedItem="{Binding TreatFirst}"
-                              
-                              
-                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="Treats"
-                              VerticalAlignment="Center" 
-                              
-                              />
-                <ComboBox Width="100" Margin="20"
-                          ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
-                              DisplayMemberPath="Treats"
-                              SelectedItem="{Binding TreatFirst}"
-                              
-                              
-                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="Treats"
-                              VerticalAlignment="Center" 
-                              
-                              />
-                <ComboBox Width="100" Margin="20"
-                          ItemsSource="{Binding Treat, RelativeSource={RelativeSource AncestorType=view:Dashboard}}"  IsEditable="True"  
-                              DisplayMemberPath="Treats"
-                              SelectedItem="{Binding TreatFirst}"
-                              
-                              
-                              SelectedValue="{Binding TreatFirst, UpdateSourceTrigger=PropertyChanged}" 
-                              SelectedValuePath="Treats"
-                              VerticalAlignment="Center" 
-                              
-                              />
-            </StackPanel>
-        </Grid>
-        
     </Grid>
 </Page>

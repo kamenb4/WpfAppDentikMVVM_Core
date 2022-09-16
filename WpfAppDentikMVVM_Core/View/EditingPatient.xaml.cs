@@ -1,18 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using WpfAppDentikMVVM_Core.Model;
 using WpfAppDentikMVVM_Core.ViewModel;
 
 namespace WpfAppDentikMVVM_Core.View
 {
     /// <summary>
-    /// Логика взаимодействия для Dashboard.xaml
+    /// Логика взаимодействия для EditingPatient.xaml
     /// </summary>
-    public partial class Dashboard : Page
+    public partial class EditingPatient : Page
     {
+        
         public static ObservableCollection<PatientList> _patientList = new ObservableCollection<PatientList>();
         public static ObservableCollection<DataPrice> _saveData = new ObservableCollection<DataPrice>();
 
@@ -56,7 +67,7 @@ namespace WpfAppDentikMVVM_Core.View
 
         public static ObservableCollection<DataPrice> SaveData
         {
-            get { return _saveData; }
+            get { return ListOfPatients.patientEditSaveData; }
             set
             {
                 _saveData = value;
@@ -64,44 +75,43 @@ namespace WpfAppDentikMVVM_Core.View
         }
         public static ObservableCollection<PatientList> PatientLists
         {
-            get { return _patientList; }
+            get { return ListOfPatients.PatientLists; }
             set
             {
                 _patientList = value;
             }
         }
-        public Dashboard()
+        public EditingPatient()
         {
             InitializeComponent();
-            SaveData.Clear();
-            
-            DgTreatPlan.ItemsSource = SaveData;
-
-
+            DataContext = PatientLists;
+            DgEditPlan.ItemsSource = SaveData;
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 var p = (ComboBox)sender;
 
                 var con = Convert.ToInt32(p.SelectedIndex);
                 SaveData[currentRowIndex].FeesFirst = Treat[con].Fees;
                 SaveData[currentRowIndex].TimeFirst = "1ч";
-            }
-            catch
-            {
-                MessageBox.Show("Допущена ошибка с первым боксом");
-            }
+
+                
+            } catch { }
         }
 
         private void Button_SaveClick(object sender, RoutedEventArgs e)
         {
             try
             {
-
+                
                 PatientLists.Add(new PatientList
                 {
                     FCs = PatientData.DataTest[0].FCs,
@@ -109,7 +119,6 @@ namespace WpfAppDentikMVVM_Core.View
                     phoneNumber = PatientData.DataTest[0].phoneNumber,
                     dataPrice = forSaveCollect,
                     SaveDataEdit = SaveData
-
                 }); ;
 
                 MessageBox.Show("Данные о клиенте сохранены");
@@ -129,37 +138,13 @@ namespace WpfAppDentikMVVM_Core.View
             }
         }
 
-        private void Button_PrintClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                long sum = 0;
-                var forPrint = new ForPrint();
-                var printDialog = new PrintDialog();
-                foreach (var p in forSaveCollect)
-                {
-                    sum += p.SelectedFees;
-                }
-
-                forPrint.dgTreatPlan.ItemsSource = forSaveCollect;
-                forPrint.textOfSum.Text = sum.ToString();
-                forPrint.Show();
-                if (printDialog.ShowDialog() == true)
-                {
-                    printDialog.PrintVisual(forPrint.GridMain, "Печать");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Произошла ошибка");
-            }
-        }
+       
 
         private void Box2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 var p = (ComboBox)sender;
 
 
@@ -169,7 +154,7 @@ namespace WpfAppDentikMVVM_Core.View
             }
             catch
             {
-                MessageBox.Show("Произошла ошибка со вторым боксом");
+                
             }
         }
 
@@ -177,7 +162,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 var p = (ComboBox)sender;
                 var con = Convert.ToInt32(p.SelectedIndex);
                 SaveData[currentRowIndex].FeesThird = Treat[con].Fees;
@@ -185,7 +170,7 @@ namespace WpfAppDentikMVVM_Core.View
             }
             catch
             {
-                MessageBox.Show("произошла ошибка с третьим боксом");
+                
             }
         }
 
@@ -193,7 +178,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 forSaveCollect.Add(new DataPrice()
                 {
                     problemName = String.Concat(SaveData[currentRowIndex].NumberTooth, " - ", SaveData[currentRowIndex].Diagnostics),
@@ -212,7 +197,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 forSaveCollect.Remove(SaveData[currentRowIndex]);
             }
             catch
@@ -225,7 +210,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 forSaveCollect.Add(new DataPrice()
                 {
                     problemName = String.Concat(SaveData[currentRowIndex].NumberTooth, " - ", SaveData[currentRowIndex].Diagnostics),
@@ -244,7 +229,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 forSaveCollect.Remove(SaveData[currentRowIndex]);
             }
             catch
@@ -257,7 +242,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 forSaveCollect.Add(new DataPrice()
                 {
                     problemName = String.Concat(SaveData[currentRowIndex].NumberTooth, " - ", SaveData[currentRowIndex].Diagnostics),
@@ -276,7 +261,7 @@ namespace WpfAppDentikMVVM_Core.View
         {
             try
             {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
                 forSaveCollect.Remove(SaveData[currentRowIndex]);
             }
             catch
@@ -292,70 +277,57 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            var p = sender as ComboBox;
-                if (Settings.forRed.Count > 0)
-                {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
-                SaveData[currentRowIndex].TreatFirst = Settings.forRed[p.SelectedIndex].TreatFirst;
-                    //SaveData[currentRowIndex].FeesFirst = Treat[17].Fees;
-                    //SaveData[currentRowIndex].TimeFirst = "1ч";
-                    SaveData[currentRowIndex].TreatSecond = Settings.forRed[p.SelectedIndex].TreatSecond;
-                    //SaveData[currentRowIndex].FeesSecond = Treat[25].Fees;
-                    //SaveData[currentRowIndex].TimeSecond = "1ч";
-                    SaveData[currentRowIndex].TreatThird = Settings.forRed[p.SelectedIndex].TreatThird;
-                    //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
-                    //SaveData[currentRowIndex].TimeThird = "1ч";
-                } else
-                {
-                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
-                SaveData[currentRowIndex].TreatFirst = Treat[3].Treats;
-                //SaveData[currentRowIndex].FeesFirst = Treat[17].Fees;
-                //SaveData[currentRowIndex].TimeFirst = "1ч";
-                SaveData[currentRowIndex].TreatSecond = Treat[13].Treats;
-                //SaveData[currentRowIndex].FeesSecond = Treat[25].Fees;
-                //SaveData[currentRowIndex].TimeSecond = "1ч";
-                SaveData[currentRowIndex].TreatThird = Treat[23].Treats;
-                //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
-                //SaveData[currentRowIndex].TimeThird = "1ч";
-                }
-
-
-        }
-
-        private void DgTreatPlan_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
             try
             {
-                if (e.Key == Key.Tab)
+                if (Settings.forRed.Count > 0)
                 {
-                    e.Handled = true;
-                    SaveData.Add(new DataPrice());
-                    // your code    
+                    var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
+                    SaveData[currentRowIndex].TreatFirst = Settings.forRed[0].TreatFirst;
+                    //SaveData[currentRowIndex].FeesFirst = Treat[17].Fees;
+                    //SaveData[currentRowIndex].TimeFirst = "1ч";
+                    SaveData[currentRowIndex].TreatSecond = Settings.forRed[0].TreatSecond;
+                    //SaveData[currentRowIndex].FeesSecond = Treat[25].Fees;
+                    //SaveData[currentRowIndex].TimeSecond = "1ч";
+                    SaveData[currentRowIndex].TreatThird = Settings.forRed[0].TreatThird;
+                    //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
+                    //SaveData[currentRowIndex].TimeThird = "1ч";
                 }
+                else
+                {
+                    var currentRowIndex = DgEditPlan.Items.IndexOf(DgEditPlan.CurrentItem);
+                    SaveData[currentRowIndex].TreatFirst = Treat[3].Treats;
+                    //SaveData[currentRowIndex].FeesFirst = Treat[17].Fees;
+                    //SaveData[currentRowIndex].TimeFirst = "1ч";
+                    SaveData[currentRowIndex].TreatSecond = Treat[13].Treats;
+                    //SaveData[currentRowIndex].FeesSecond = Treat[25].Fees;
+                    //SaveData[currentRowIndex].TimeSecond = "1ч";
+                    SaveData[currentRowIndex].TreatThird = Treat[23].Treats;
+                    //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
+                    //SaveData[currentRowIndex].TimeThird = "1ч";
+                }
+            } catch
+            {
+                
             }
-            catch { }
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
-            SaveData[currentRowIndex].visibilityTreatFirstSecond = Visibility.Visible;
-            SaveData[currentRowIndex].visibilityTreatFirstThird = Visibility.Visible;
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
-            SaveData[currentRowIndex].visibilityTreatSecondSecond = Visibility.Visible;
-            SaveData[currentRowIndex].visibilityTreatSecondThird = Visibility.Visible;
-        }
+            foreach (Window window in Application.Current.Windows)
+            {
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
-            SaveData[currentRowIndex].visibilityTreatThirdSecond = Visibility.Visible;
-            SaveData[currentRowIndex].visibilityTreatThirdThird = Visibility.Visible;
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "ListOfPatients", ".xaml"), UriKind.RelativeOrAbsolute));
+                }
+
+            }
         }
     }
 }

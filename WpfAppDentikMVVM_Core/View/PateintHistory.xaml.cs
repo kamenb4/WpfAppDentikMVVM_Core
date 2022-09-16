@@ -21,9 +21,8 @@ namespace WpfAppDentikMVVM_Core.View
     /// </summary>
     public partial class PateintHistory : Page
     {
-        int p = 0;
-        PatientList v = new PatientList();
-
+        
+       
         public PateintHistory()
         {
 
@@ -48,7 +47,8 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            PatientListOne.ItemsSource = ListOfPatients.PatientLists[v.PatientIndex].dataPrice;
+
+            PatientListOne.ItemsSource = ListOfPatients.patientHist;
         }
     }
 }

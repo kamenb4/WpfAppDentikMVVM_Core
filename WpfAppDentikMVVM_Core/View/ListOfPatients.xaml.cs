@@ -22,11 +22,14 @@ namespace WpfAppDentikMVVM_Core.View
     /// </summary>
     public partial class ListOfPatients : Page
     {
-        //public static ObservableCollection<PatientList>? _patientList = new ObservableCollection<PatientList>();
+        public static ObservableCollection<DataPrice> patientHist = new ObservableCollection<DataPrice>();
 
-        //public static int p = 0;
-        
+        public static ObservableCollection<PatientList> patientEdit = new ObservableCollection<PatientList>();
+        public static ObservableCollection<DataPrice> patientEditSaveData = new ObservableCollection<DataPrice>();
        
+        //public static int p = 0;
+
+        
         public static ObservableCollection<PatientList> PatientLists
         {
             get
@@ -53,13 +56,15 @@ namespace WpfAppDentikMVVM_Core.View
         {
             
             InitializeComponent();
-           
+            
             AllPatientsList.ItemsSource = PatientLists;
             //PatientData.DataTest.Clear();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            patientEdit.Clear();
+            patientEditSaveData.Clear();
             PatientData.DataTest.Clear();
             Dashboard.SaveData.Clear();
             foreach (Window window in Application.Current.Windows)
@@ -72,6 +77,7 @@ namespace WpfAppDentikMVVM_Core.View
 
             }
         }
+        
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -96,7 +102,14 @@ namespace WpfAppDentikMVVM_Core.View
             //MessageBox.Show(currentRowIndex.ToString());
             //MessageBox.Show(AllPatientsList.SelectedIndex.ToString());
             ////MessageBox.Show(PatientLists[AllPatientsList.SelectedIndex].dataPrice.Count.ToString());
-            ////history.PatientListOne.ItemsSource = PatientLists[AllPatientsList.SelectedIndex].dataPrice;
+            //var p = AllPatientsList.Items.IndexOf(AllPatientsList.SelectedItem);
+            //MessageBox.Show(AllPatientsList.SelectedIndex.ToString());
+            //if (p == -1) p++;
+            //MessageBox.Show(p.ToString());
+
+            var p = PatientLists[AllPatientsList.SelectedIndex].dataPrice;
+            
+            patientHist = p;
             //var p = new PatientList();
             //p.PatientIndex = AllPatientsList.SelectedIndex;
             
@@ -116,6 +129,8 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
+            patientEdit.Clear();
             //PatientLists.Add(new PatientList()
             //{
             //    FCs = PatientData.DataTest[0].FCs,
@@ -133,12 +148,24 @@ namespace WpfAppDentikMVVM_Core.View
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            //PatientLists[AllPatientsList.SelectedIndex].dataPrice.Clear();
+            patientEdit.Add(PatientLists[AllPatientsList.SelectedIndex]);
+            patientEditSaveData = patientEdit[0].SaveDataEdit;
+            foreach (Window window in Application.Current.Windows)
+            {
 
+                if (window.GetType() == typeof(MainWindow))
+                {
+
+                    (window as MainWindow).MainWindowFrame.Navigate(new Uri(string.Format("{0}{1}{2}", "View/", "EditingPatient", ".xaml"), UriKind.RelativeOrAbsolute));
+                }
+
+            }
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-
+            PatientLists.RemoveAt(AllPatientsList.SelectedIndex);
         }
     }
 }

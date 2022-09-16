@@ -7,7 +7,7 @@
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:WpfAppDentikMVVM_Core.Model" xmlns:view="clr-namespace:WpfAppDentikMVVM_Core.View" xmlns:viewmodel="clr-namespace:WpfAppDentikMVVM_Core.ViewModel" xmlns:customcontrols="clr-namespace:WpfAppDentikMVVM_Core.CustomControls" 
        
         mc:Ignorable="d"
-       Title="TestPrice" Height="850" Width="1100"  WindowStartupLocation="CenterScreen" Background="White" x:Name="Window" WindowState="Maximized" >
+       Title="TestPrice" Height="850" Width="1100"  WindowStartupLocation="CenterScreen" Style="{DynamicResource WindowStyle}" Background="White" x:Name="Window" WindowState="Maximized">
 
     
     <Grid x:Name="GridMain">

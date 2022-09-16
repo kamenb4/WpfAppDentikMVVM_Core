@@ -16,7 +16,7 @@ namespace WpfAppDentikMVVM_Core.ViewModel
         {
             using (var context = new testContext())
             {
-                context.Dta.Load();
+                context.Dta.LoadAsync();
                 valuess = context.Dta.Local.ToObservableCollection();
                 return valuess;
             }
