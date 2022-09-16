@@ -293,7 +293,7 @@ namespace WpfAppDentikMVVM_Core.View
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             var p = sender as ComboBox;
-                if (Settings.forRed.Count > 0)
+                if (Settings.forRed.Count > 0 && p.SelectedIndex <= Settings.forRed.Count - 1)
                 {
                 var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
                 SaveData[currentRowIndex].TreatFirst = Settings.forRed[p.SelectedIndex].TreatFirst;
@@ -305,7 +305,7 @@ namespace WpfAppDentikMVVM_Core.View
                     SaveData[currentRowIndex].TreatThird = Settings.forRed[p.SelectedIndex].TreatThird;
                     //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
                     //SaveData[currentRowIndex].TimeThird = "1ч";
-                } else
+                } else if( p.SelectedIndex > Settings.forRed.Count - 1)
                 {
                 var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
                 SaveData[currentRowIndex].TreatFirst = Treat[3].Treats;
@@ -317,7 +317,19 @@ namespace WpfAppDentikMVVM_Core.View
                 SaveData[currentRowIndex].TreatThird = Treat[23].Treats;
                 //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
                 //SaveData[currentRowIndex].TimeThird = "1ч";
-                }
+                } else
+            {
+                var currentRowIndex = DgTreatPlan.Items.IndexOf(DgTreatPlan.CurrentItem);
+                SaveData[currentRowIndex].TreatFirst = Treat[3].Treats;
+                //SaveData[currentRowIndex].FeesFirst = Treat[17].Fees;
+                //SaveData[currentRowIndex].TimeFirst = "1ч";
+                SaveData[currentRowIndex].TreatSecond = Treat[13].Treats;
+                //SaveData[currentRowIndex].FeesSecond = Treat[25].Fees;
+                //SaveData[currentRowIndex].TimeSecond = "1ч";
+                SaveData[currentRowIndex].TreatThird = Treat[23].Treats;
+                //SaveData[currentRowIndex].FeesThird = Treat[2].Fees;
+                //SaveData[currentRowIndex].TimeThird = "1ч";
+            }
 
 
         }

@@ -67,7 +67,10 @@ namespace WpfAppDentikMVVM_Core.View
             
             forRed.Add(new DataPrice()
             {
-                Diagnostics = diagCombo.SelectionBoxItemStringFormat, TreatFirst = firstCombo.SelectionBoxItemStringFormat, TreatSecond = secondCombo.SelectionBoxItemStringFormat, TreatThird = thirdCombo.SelectionBoxItemStringFormat
+                Diagnostics = diagCombo.Text,
+                TreatFirst = firstCombo.SelectedValue.ToString(),
+                TreatSecond = secondCombo.SelectedValue.ToString(),
+                TreatThird = thirdCombo.SelectedValue.ToString()
             });
             MessageBox.Show("Изменения сохранены");
         }
